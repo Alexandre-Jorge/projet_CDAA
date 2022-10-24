@@ -1,6 +1,5 @@
 #include "contact.h"
-#include "interraction.h"
-#include "tache.h"
+#include "interaction.h"
 #include "gestioncontact.h"
 
 void testConstructeur(){
@@ -10,8 +9,8 @@ void testConstructeur(){
 	delete c1;
 
 	
-	//Créer une interraction
-	Interraction i1;
+	//Créer une interaction
+	Interaction i1;
 	i1.println();
 	delete i1;
 	

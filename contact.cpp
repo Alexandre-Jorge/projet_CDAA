@@ -33,8 +33,12 @@ std::string Contact::getPhoto(){
     return this->photo;
 }
 
-Date Contact::getDateCreation(){
+sdate Contact::getDateCreation(){
     return this->dateCreation;
+}
+
+sdate Contact::getDateModification(){
+    return this->dateModification;
 }
 
 std::list<Interaction> Contact::getLi(){
@@ -61,10 +65,15 @@ void Contact::setPhoto(std::string photo){
     this->photo = photo;
 }
 
-void Contact::setDateCreation(Date dateCreation){
+void Contact::setDateCreation(sdate dateCreation){
     this->dateCreation = dateCreation;
 }
 
 void Contact::setLi(std::list<Interaction> li){
     this->li = li;
 }
+
+void Contact::setDateModification(sdate dateModification){
+    this->dateModification = dateModification;
+}
+

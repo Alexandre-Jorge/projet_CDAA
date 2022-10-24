@@ -6,6 +6,7 @@ class Interaction{
         std::string contenu;
     public:
         Interaction();
+        Interaction(const Date dateInteract,const std::string contenu);
         ~Interaction();
         Date getDateInteract();
         std::string getContenu();
