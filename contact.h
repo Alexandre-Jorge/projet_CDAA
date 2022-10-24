@@ -1,11 +1,9 @@
 #include <iostream>
 #include <ctime>
+#include <list>
+#include <chrono>
+#include "interaction.h"
 
-struct sdate {
-    unsigned int jour;
-    unsigned int mois;
-    unsigned int annee;
-};
 
 class Contact{
     private:
@@ -13,7 +11,7 @@ class Contact{
         std::string prenom;
         std::string mail;
         std::list<unsigned> telephone;
-        std:string photo;
+        std::string photo;
         struct sdate dateCreation;
         struct sdate dateModification;
         std::list<Interaction> li;
@@ -23,7 +21,7 @@ class Contact{
         std::string getNom();
         std::string getPrenom();
         std::string getMail();
-        std::string getTelephone();
+        std::list<unsigned> getTelephone();
         std::string getPhoto();
         sdate getDateCreation();
         sdate getDateModification();
@@ -31,10 +29,10 @@ class Contact{
         void setNom(std::string nom);
         void setPrenom(std::string prenom);
         void setMail(std::string mail);
-        void setTelephone(std::string telephone);
+        void setTelephone(std::list<unsigned> telephone);
         void setPhoto(std::string photo);
         void setDateCreation(sdate dateCreation);
         void setLi(std::list<Interaction> li);
         void setDateModification(sdate dateModification);
         friend std::ostream& operator<<(std::ostream& os, const Contact& contact);
-}
+};

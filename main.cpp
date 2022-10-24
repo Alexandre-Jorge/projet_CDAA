@@ -1,8 +1,6 @@
-#include "contact.h"
-#include "interaction.h"
 #include "gestioncontact.h"
 
-void testConstructeur(){
+/*void testConstructeur(){
 	//Créer un contact
 	Contact c1;
 	c1.println();
@@ -20,18 +18,22 @@ void testConstructeur(){
 	delete t1;
 	
 	return;
-}
+}*/
 
 
 int main()
 {
 	GestionContact g;
-	testConstructeur();
+	//testConstructeur();
+	Contact c1;
+	c1.setNom("Doe");
+	c1.setPrenom("John");
+	c1.setMail("Doe.John@gmail.com");
+	c1.setTelephone({0,6,1,2,3,4,5,6,7,8});
+	c1.setPhoto("DoeJohnPic.jpg");
+	std::cout << c1 << std::endl;
+	//g.Ajoute(new Contact());
 	
-	g.Ajoute(new Contact());
-	
-	
-
 	return 0;
 }
 

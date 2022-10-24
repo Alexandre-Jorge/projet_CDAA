@@ -14,4 +14,4 @@ class GestionContact{
         sdate getDateModification();
         void setDateModification(sdate dateModification);
 
-}
+};

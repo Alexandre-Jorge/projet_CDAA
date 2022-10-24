@@ -4,9 +4,13 @@ Contact::Contact(){
     this->nom = "";
     this->prenom = "";
     this->mail = "";
-    this->telephone = "";
+    this->telephone = std::list<unsigned>();
     this->photo = "";
-    this->dateCreation = Date();
+    time_t t = time(0);//nb sec depuis 1970
+    tm * ltm = localtime(&t);//conversion
+    this->dateCreation = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
+    this->li = std::list<Interaction>();
+    this->dateModification = {0,0,0};
     this->li = std::list<Interaction>();
 }
 
@@ -25,7 +29,7 @@ std::string Contact::getMail(){
     return this->mail;
 }
 
-std::string Contact::getTelephone(){
+std::list<unsigned> Contact::getTelephone(){
     return this->telephone;
 }
 
@@ -57,7 +61,7 @@ void Contact::setMail(std::string mail){
     this->mail = mail;
 }
 
-void Contact::setTelephone(std::string telephone){
+void Contact::setTelephone(std::list<unsigned> telephone){
     this->telephone = telephone;
 }
 
@@ -77,3 +81,22 @@ void Contact::setDateModification(sdate dateModification){
     this->dateModification = dateModification;
 }
 
+std::ostream& operator<<(std::ostream& os, const Contact& contact){
+    os << "Nom: " << contact.nom << std::endl;
+    os << "Prenom: " << contact.prenom << std::endl;
+    os << "Mail: " << contact.mail << std::endl;
+    os << "Telephone: ";
+    for (std::list<unsigned>::const_iterator it = contact.telephone.begin(); it != contact.telephone.end(); ++it){
+        os << *it;
+    }
+    os << std::endl;
+    os << "Photo: " << contact.photo << std::endl;
+    os << "Date de creation: " << contact.dateCreation.jour << "/" << contact.dateCreation.mois << "/" << contact.dateCreation.annee <<std::endl;
+    os << "Date de Modification: " << contact.dateModification.jour << "/" << contact.dateModification.mois << "/" << contact.dateModification.annee <<std::endl;
+    os << "Liste d'interactions: ";
+    for (std::list<Interaction>::const_iterator it = contact.li.begin(); it != contact.li.end(); ++it){
+        os << *it;
+    }
+    os << std::endl;
+    return os;
+}

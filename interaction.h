@@ -1,16 +1,17 @@
 #include <iostream>
+#include "sdate.h"
 
 class Interaction{
     private:
-        Date dateInteract;
+        sdate dateInteract;
         std::string contenu;
     public:
         Interaction();
-        Interaction(const Date dateInteract,const std::string contenu);
+        Interaction(const sdate dateInteract,const std::string contenu);
         ~Interaction();
-        Date getDateInteract();
+        sdate getDateInteract();
         std::string getContenu();
-        void setDateInteract(Date dateInteract);
+        void setDateInteract(sdate dateInteract);
         void setContenu(std::string contenu);
         friend std::ostream& operator<<(std::ostream& os, const Interaction& interaction);
-}
+};
