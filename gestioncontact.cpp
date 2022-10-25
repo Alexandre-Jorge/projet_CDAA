@@ -18,3 +18,18 @@ std::list<Contact> GestionContact::getLc(){
 void GestionContact::setLc(std::list<Contact> lc){
     this->lc = lc;
 }
+
+void GestionContact::ajouteContact(Contact c){
+	this->lc.pushback(c);
+//	this->setDateModification();
+}
+
+void GestionContact::retireContact(Contact c){
+	for (int i=0; i<this->lc.size(); i++){
+		if (c=std::advance(this->lc,i){
+			this->lc.erase(i);
+//			this->setDateModification();
+			break;
+		}
+	}
+}

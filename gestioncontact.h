@@ -13,5 +13,7 @@ class GestionContact{
         void setLc(std::list<Contact> lc);
         sdate getDateModification();
         void setDateModification(sdate dateModification);
+        void ajouteContact(Contact c);
+        void retireContact(Contact c);
 
 };
