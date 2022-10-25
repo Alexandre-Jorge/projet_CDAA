@@ -1,4 +1,5 @@
 #include "interaction.h"
+#include <iostream>
 
 Interaction::Interaction(){
     time_t t = time(0);//nb sec depuis 1970
@@ -24,6 +25,7 @@ void Interaction::setDateInteract(sdate dateInteract){
 
 void Interaction::setContenu(std::string contenu){
     this->contenu = contenu;
+    this->lierTache();
 }
 
 

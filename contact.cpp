@@ -83,7 +83,7 @@ void Contact::setDateModification(sdate dateModification){
 
 void Contact::ajouteInteraction(Interaction i){
 //Ajoute une interaction à la fin de la liste
-	this->li.pushback(i);
+	this->li.push_back(i);
 //	this->setDateModification();
 }
 void Contact::retireInteraction(Interaction i){

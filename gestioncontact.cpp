@@ -24,7 +24,7 @@ void GestionContact::setLc(std::list<Contact> lc){
 
 void GestionContact::ajouteContact(Contact c){
 //Ajoute un contact à la fin de la liste
-	this->lc.pushback(c);
+	this->lc.push_back(c);
 //	this->setDateModification();
 }
 
