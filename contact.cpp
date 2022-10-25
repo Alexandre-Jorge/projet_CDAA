@@ -81,6 +81,21 @@ void Contact::setDateModification(sdate dateModification){
     this->dateModification = dateModification;
 }
 
+void Contact::ajouteInteraction(Interaction i){
+//Ajoute une interaction à la fin de la liste
+	this->li.pushback(i);
+//	this->setDateModification();
+}
+void Contact::retireInteraction(Interaction i){
+//Retire une interaction de la liste
+	for (int j=0; j<this->li.size(); j++){
+		if (i=std::advance(this->li,j){
+			this->li.erase(j);
+//			this->setDateModification();
+			break;
+		}
+	}
+}
 std::ostream& operator<<(std::ostream& os, const Contact& contact){
     os << "Nom: " << contact.nom << std::endl;
     os << "Prenom: " << contact.prenom << std::endl;

@@ -34,5 +34,7 @@ class Contact{
         void setDateCreation(sdate dateCreation);
         void setLi(std::list<Interaction> li);
         void setDateModification(sdate dateModification);
+        void ajouteInteraction(Interaction i);
+        void retireInteraction(Interaction i);
         friend std::ostream& operator<<(std::ostream& os, const Contact& contact);
 };
