@@ -14,4 +14,5 @@ class Interaction{
         void setDateInteract(sdate dateInteract);
         void setContenu(std::string contenu);
         friend std::ostream& operator<<(std::ostream& os, const Interaction& interaction);
+        bool operator==(const Interaction& interaction);
 };

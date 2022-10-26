@@ -1,5 +1,7 @@
-#include "sdate.h"
 #include <iostream>
+#include <ctime>
+#include <chrono>
+#include "sdate.h"
 
 class Tache{
 	private:
@@ -14,6 +16,5 @@ class Tache{
 		sdate getDate();
 		void setDesc(std::string desc);
 		void setDate(sdate date);
-		sdate strTodate(std::string date);
 		friend std::ostream& operator<<(std::ostream& os, const Tache& tache);
 };

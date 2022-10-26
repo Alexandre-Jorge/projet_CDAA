@@ -6,7 +6,9 @@ Tache::Tache(){
 }
 Tache::Tache(std::string desc){
 	this->desc=desc;
-	this->date={0,0,0};
+	time_t t = time(0);//nb sec depuis 1970
+    tm * ltm = localtime(&t);//conversion
+    this->date = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
 }
 
 Tache::Tache(std::string desc, sdate date){
@@ -33,10 +35,3 @@ void Tache::setDate(sdate date){
 	this->date=date;
 }
 
-sdate Tache::strTodate(std::string date){
-	sdate d;
-	d.jour = date.substr(0,2);
-	d.mois = std::stoi(date.substr(3,2));
-	d.annee = std::stoi(date.substr(6,4));
-	return d;
-}

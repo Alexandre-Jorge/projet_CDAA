@@ -31,11 +31,9 @@ void GestionContact::ajouteContact(Contact c){
 
 void GestionContact::retireContact(Contact c){
 //Retire le contact de la liste
-	for (int i=0; i<this->lc.size(); i++){
-		if (c=std::advance(this->lc,i){
-			this->lc.erase(i);
-//			this->setDateModification();
-			break;
+	for(std::list<Contact>::iterator it = this->lc.begin(); it != this->lc.end(); ++it){
+		if (c==*it){
+			this->lc.erase(it);
 		}
 	}
 }

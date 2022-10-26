@@ -25,7 +25,6 @@ void Interaction::setDateInteract(sdate dateInteract){
 
 void Interaction::setContenu(std::string contenu){
     this->contenu = contenu;
-    this->lierTache();
 }
 
 
@@ -33,4 +32,11 @@ std::ostream& operator<<(std::ostream& os, const Interaction& interaction){
         os << "Date de l'interaction : " << interaction.dateInteract.jour << "/" << interaction.dateInteract.mois << "/" << interaction.dateInteract.annee << std::endl;
         os << "Contenu de l'interaction : " << interaction.contenu << std::endl;
         return os;
+}
+
+bool Interaction::operator==(const Interaction& interaction){
+    return  this->dateInteract.jour == interaction.dateInteract.jour &&
+            this->dateInteract.mois == interaction.dateInteract.mois &&
+            this->dateInteract.annee == interaction.dateInteract.annee &&
+            this->contenu == interaction.contenu;
 }

@@ -17,6 +17,7 @@ class Contact{
         std::list<Interaction> li;
     public:
         Contact();
+        Contact(std::string nom, std::string prenom, std::string mail, std::list<unsigned> telephone, std::string photo);
         ~Contact();
         std::string getNom();
         std::string getPrenom();
@@ -37,4 +38,5 @@ class Contact{
         void ajouteInteraction(Interaction i);
         void retireInteraction(Interaction i);
         friend std::ostream& operator<<(std::ostream& os, const Contact& contact);
+        bool operator==(const Contact& contact);
 };

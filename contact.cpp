@@ -88,13 +88,12 @@ void Contact::ajouteInteraction(Interaction i){
 }
 void Contact::retireInteraction(Interaction i){
 //Retire une interaction de la liste
-	for (int j=0; j<this->li.size(); j++){
-		if (i=std::advance(this->li,j){
-			this->li.erase(j);
-//			this->setDateModification();
-			break;
-		}
-	}
+    for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
+        if (i==*it){
+            this->li.erase(it);
+            break;
+        }
+    }
 }
 std::ostream& operator<<(std::ostream& os, const Contact& contact){
     os << "Nom: " << contact.nom << std::endl;
@@ -114,4 +113,18 @@ std::ostream& operator<<(std::ostream& os, const Contact& contact){
     }
     os << std::endl;
     return os;
+}
+
+bool Contact::operator==(const Contact& contact){
+    return  this->nom == contact.nom &&
+            this->prenom == contact.prenom &&
+            this->mail == contact.mail &&
+            this->telephone == contact.telephone &&
+            this->photo == contact.photo &&
+            this->dateCreation.jour == contact.dateCreation.jour &&
+            this->dateCreation.mois == contact.dateCreation.mois &&
+            this->dateCreation.annee == contact.dateCreation.annee &&
+            this->dateModification.jour == contact.dateModification.jour &&
+            this->dateModification.mois == contact.dateModification.mois &&
+            this->dateModification.annee == contact.dateModification.annee;
 }

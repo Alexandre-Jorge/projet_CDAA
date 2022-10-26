@@ -1,25 +1,8 @@
 #include "gestioncontact.h"
 
-/*void testConstructeur(){
-	//Créer un contact
-	Contact c1;
-	c1.println();
-	delete c1;
-
-	
-	//Créer une interaction
-	Interaction i1;
-	i1.println();
-	delete i1;
-	
-	//Créer une tache
-	Tache t1;
-	t1.println();
-	delete t1;
-	
-	return;
+/*bool testContact(){
+	Contact c1 = Contact("Dupont", "Jean", "06 06 06 06 06", "monmail@blabal.com", "photo.jpg");
 }*/
-
 
 int main()
 {

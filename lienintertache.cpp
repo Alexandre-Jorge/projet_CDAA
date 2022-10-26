@@ -25,13 +25,13 @@ void LienInterTache::ajouteElt(Interaction i){
 		}
 		else{
 		//Si @date existe
-			ss=i.getContenu().substr(n+5,i.getContenu().size()-n+5);
-			this->lt.push_back(Tache(i.getContenu(),ss));
+			//ss=i.getContenu().substr(n+5,i.getContenu().size()-n+5);
+			this->lt.push_back(Tache(i.getContenu(),i.getDateInteract()));
 		}			
 	}
 	else{
 	//Aucune tache détectée, donc l'interaction est lié à un pointeur null
-		this->lt.push_back(nullptr);
+		this->lt.push_back(Tache());
 	}
 }
 
