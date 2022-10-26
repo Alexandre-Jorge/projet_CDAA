@@ -108,12 +108,12 @@ void Contact::setDateModification(sdate dateModification){
 }
 
 void Contact::ajouteInteraction(Interaction i){
-//Ajoute une interaction à la fin de la liste
+    //Ajoute une interaction à la fin de la liste
 	this->li.push_back(i);
-//	this->setDateModification();
+    //this->setDateModification();
 }
 void Contact::retireInteraction(Interaction i){
-//Retire une interaction de la liste
+    //Retire une interaction de la liste
     for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
         if (i==*it){
             this->li.erase(it);
