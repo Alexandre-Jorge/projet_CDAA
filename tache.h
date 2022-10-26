@@ -18,4 +18,5 @@ class Tache{
 		void setDesc(std::string desc);
 		void setDate(sdate date);
 		friend std::ostream& operator<<(std::ostream& os, const Tache& tache);
+		bool operator==(const Tache& tache);
 };

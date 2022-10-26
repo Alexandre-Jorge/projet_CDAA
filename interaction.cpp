@@ -45,8 +45,6 @@ std::ostream& operator<<(std::ostream& os, const Interaction& interaction){
 }
 
 bool Interaction::operator==(const Interaction& interaction){
-    return  this->dateInteract.jour == interaction.dateInteract.jour &&
-            this->dateInteract.mois == interaction.dateInteract.mois &&
-            this->dateInteract.annee == interaction.dateInteract.annee &&
+    return  this->dateInteract == interaction.dateInteract &&
             this->contenu == interaction.contenu;
 }

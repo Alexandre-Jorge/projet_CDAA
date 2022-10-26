@@ -15,7 +15,11 @@ class GestionContact{
         void setLc(std::list<Contact> lc);
         sdate getDateModification();
         void setDateModification(sdate dateModification);
+        void updateModification();
         void ajouteContact(Contact c);
         void retireContact(Contact c);
+        void retireContact(int i);
+        Contact getContact(int i);
+        friend std::ostream& operator<<(std::ostream& os, const GestionContact& gc);
 
 };

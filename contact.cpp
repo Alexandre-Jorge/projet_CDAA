@@ -147,10 +147,6 @@ bool Contact::operator==(const Contact& contact){
             this->mail == contact.mail &&
             this->telephone == contact.telephone &&
             this->photo == contact.photo &&
-            this->dateCreation.jour == contact.dateCreation.jour &&
-            this->dateCreation.mois == contact.dateCreation.mois &&
-            this->dateCreation.annee == contact.dateCreation.annee &&
-            this->dateModification.jour == contact.dateModification.jour &&
-            this->dateModification.mois == contact.dateModification.mois &&
-            this->dateModification.annee == contact.dateModification.annee;
+            this->dateCreation == contact.dateCreation &&
+            this->dateModification == contact.dateModification;
 }

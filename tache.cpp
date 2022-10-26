@@ -40,3 +40,6 @@ void Tache::setDate(sdate date){
 	this->date=date;
 }
 
+bool Tache::operator==(const Tache& t){
+	return this->desc==t.desc && this->date==t.date;
+}
