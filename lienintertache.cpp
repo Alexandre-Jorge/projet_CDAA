@@ -1,13 +1,11 @@
 #include "lienintertache.h"
-#include "interaction.h"
-#include "tache.h"
 
 LienInterTache::LienInterTache(){
 	this->li = std::list<Interaction>();
 	this->lt = std::list<Tache>();
 }
 
-LieninterTache::~LienInterTache(){
+LienInterTache::~LienInterTache(){
 }
 
 
@@ -23,12 +21,12 @@ void LienInterTache::ajouteElt(Interaction i){
 		int n = i.getContenu().rfind(ex);
 		if (n==i.getContenu().npos){
 		//Si @date n'existe pas
-			this->lt.push_back(new Tache(i.getContenu());
+			this->lt.push_back(Tache(i.getContenu()));
 		}
 		else{
 		//Si @date existe
 			ss=i.getContenu().substr(n+5,i.getContenu().size()-n+5);
-			this->lt.push_back(new Tache(i.getContenu(),ss);
+			this->lt.push_back(Tache(i.getContenu(),ss));
 		}			
 	}
 	else{
