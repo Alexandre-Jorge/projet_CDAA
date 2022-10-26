@@ -16,6 +16,11 @@ Tache::Tache(std::string desc, sdate date){
 	this->date=date;
 }
 
+Tache::Tache(const Tache& t){
+	this->desc=t.desc;
+	this->date=t.date;
+}
+
 Tache::~Tache(){
 }
 

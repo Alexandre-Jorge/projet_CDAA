@@ -18,6 +18,7 @@ class Contact{
     public:
         Contact();
         Contact(std::string nom, std::string prenom, std::string mail, std::list<unsigned> telephone, std::string photo);
+        Contact(const Contact& c);
         ~Contact();
         std::string getNom();
         std::string getPrenom();

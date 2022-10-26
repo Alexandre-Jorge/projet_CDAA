@@ -1,8 +1,8 @@
 #include "gestioncontact.h"
 
-/*bool testContact(){
-	Contact c1 = Contact("Dupont", "Jean", "06 06 06 06 06", "monmail@blabal.com", "photo.jpg");
-}*/
+bool testContact(){
+	Contact c1 = Contact("Doe", "John", "Doe.John@gmail.com", {0,6,1,2,3,4,5,6,7,8}, "photo.jpg");
+}
 
 int main()
 {

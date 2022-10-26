@@ -8,6 +8,7 @@ class Interaction{
     public:
         Interaction();
         Interaction(const sdate dateInteract,const std::string contenu);
+        Interaction(const Interaction& interaction);
         ~Interaction();
         sdate getDateInteract();
         std::string getContenu();

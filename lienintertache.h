@@ -8,6 +8,8 @@ class LienInterTache{
 		std::list<Tache> lt;
 	public:
 		LienInterTache();
+		LienInterTache(std::list<Interaction> li, std::list<Tache> lt);
+		LienInterTache(const LienInterTache& lit);
 		~LienInterTache();
 		std::list<Interaction> getLi();
 		std::list<Tache> getLt();

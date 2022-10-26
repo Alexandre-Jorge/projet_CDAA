@@ -5,6 +5,16 @@ LienInterTache::LienInterTache(){
 	this->lt = std::list<Tache>();
 }
 
+LienInterTache::LienInterTache(std::list<Interaction> li, std::list<Tache> lt){
+	this->li = li;
+	this->lt = lt;
+}
+
+LienInterTache::LienInterTache(const LienInterTache& lit){
+	this->li = lit.li;
+	this->lt = lit.lt;
+}
+
 LienInterTache::~LienInterTache(){
 }
 
@@ -25,7 +35,6 @@ void LienInterTache::ajouteElt(Interaction i){
 		}
 		else{
 		//Si @date existe
-			//ss=i.getContenu().substr(n+5,i.getContenu().size()-n+5);
 			this->lt.push_back(Tache(i.getContenu(),i.getDateInteract()));
 		}			
 	}

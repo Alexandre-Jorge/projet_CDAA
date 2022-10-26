@@ -5,11 +5,21 @@ GestionContact::GestionContact(){
     this->lc = std::list<Contact>();
 }
 
-GestionContact::~GestionContact(){
-}
-
 GestionContact::GestionContact(std::list<Contact> lc){
     this->lc = lc;
+}
+
+GestionContact::GestionContact(std::list<Contact> lc, sdate dateModification){
+	this->lc = lc;
+	this->dateModification = dateModification;
+}
+
+GestionContact::GestionContact(const GestionContact& gc){
+	this->lc = gc.lc;
+	this->dateModification = gc.dateModification;
+}
+
+GestionContact::~GestionContact(){
 }
 
 std::list<Contact> GestionContact::getLc(){

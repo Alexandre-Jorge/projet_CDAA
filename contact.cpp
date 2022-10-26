@@ -10,8 +10,34 @@ Contact::Contact(){
     tm * ltm = localtime(&t);//conversion
     this->dateCreation = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
     this->li = std::list<Interaction>();
-    this->dateModification = {0,0,0};
+    this->dateModification = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
     this->li = std::list<Interaction>();
+}
+
+Contact::Contact(std::string nom, std::string prenom, std::string mail, std::list<unsigned> telephone, std::string photo){
+    this->nom = nom;
+    this->prenom = prenom;
+    this->mail = mail;
+    this->telephone = telephone;
+    this->photo = photo;
+    time_t t = time(0);//nb sec depuis 1970
+    tm * ltm = localtime(&t);//conversion
+    this->dateCreation = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
+    this->li = std::list<Interaction>();
+    this->dateModification = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
+    this->li = std::list<Interaction>();
+}
+
+Contact::Contact(const Contact& c){
+    this->nom = c.nom;
+    this->prenom = c.prenom;
+    this->mail = c.mail;
+    this->telephone = c.telephone;
+    this->photo = c.photo;
+    this->dateCreation = c.dateCreation;
+    this->li = c.li;
+    this->dateModification = c.dateModification;
+    this->li = c.li;
 }
 
 Contact::~Contact(){

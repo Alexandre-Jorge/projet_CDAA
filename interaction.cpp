@@ -8,6 +8,16 @@ Interaction::Interaction(){
     this->contenu = "";
 }
 
+Interaction::Interaction(const sdate dateInteract,const std::string contenu){
+    this->dateInteract = dateInteract;
+    this->contenu = contenu;
+}
+
+Interaction::Interaction(const Interaction& interaction){
+    this->dateInteract = interaction.dateInteract;
+    this->contenu = interaction.contenu;
+}
+
 Interaction::~Interaction(){
 }
 

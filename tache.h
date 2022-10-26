@@ -11,6 +11,7 @@ class Tache{
 		Tache();
 		Tache(std::string desc);
 		Tache(std::string desc, sdate date);
+		Tache(const Tache& tache);
 		~Tache();
 		std::string getDesc();
 		sdate getDate();
