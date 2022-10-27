@@ -3,7 +3,7 @@
 #include <list>
 class GestionLienIntertache{
     private:
-        std::list<LienInterTache> lit;
+        std::list<LienInterTache> lit;//!< liste de LienInterTache
     public:
         GestionLienIntertache();
         GestionLienIntertache(std::list<LienInterTache> lit);

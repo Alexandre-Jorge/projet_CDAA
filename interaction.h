@@ -4,8 +4,8 @@
 #include "sdate.h"
 class Interaction{
     private:
-        std::string contenu;
-        sdate dateInteract;
+        std::string contenu;//!< contenu de l'interaction (texte)
+        sdate dateInteract;//!< date de l'interaction, peut etre préciser avec @date
     public:
         Interaction();
         Interaction(const std::string contenu);

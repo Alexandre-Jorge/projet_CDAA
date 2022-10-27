@@ -2,8 +2,8 @@
 
 class GestionContact{
     private:
-        std::list<Contact> lc;
-        struct sdate dateModification;//dernier ajout / suppression / modification
+        std::list<Contact> lc;//!< liste de contact
+        struct sdate dateModification;//!< date de modification, se met a jour avec un(e) ajout / suppression / modification
     public:
         GestionContact();
         GestionContact(std::list<Contact> lc);
