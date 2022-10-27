@@ -52,11 +52,6 @@ void GestionContact::ajouteContact(Contact c){
 
 void GestionContact::retireContact(Contact c){
 	//Retire le contact de la liste et chage la date de modification
-	/*for(std::list<Contact>::iterator it = this->lc.begin(); it != this->lc.end(); ++it){
-		if (c==*it){
-			this->lc.remove(*it);
-		}
-	}*/
 	this->lc.remove(c);//todo throw exception if not found
 	this->updateModification();
 }
@@ -83,4 +78,16 @@ std::ostream& operator<<(std::ostream& os, const GestionContact& gc){
 		os << *it << std::endl;
 	}
 	return os;
+}
+
+GestionContact GestionContact::operator+=(const Contact& contact){
+	//Ajoute un contact à la fin de la liste
+	this->ajouteContact(contact);
+	return *this;
+}
+
+GestionContact GestionContact::operator-=(const Contact& contact){
+	//Retire le contact de la liste et chage la date de modification
+	this->retireContact(contact);
+	return *this;
 }

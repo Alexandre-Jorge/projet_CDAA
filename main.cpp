@@ -4,7 +4,7 @@ using namespace std;
 bool testContact(){
 //Test des différentes fonctions de la classe contact
 	bool res = true;
-	Contact c1 = Contact("Doe", "John", "Doe.John@gmail.com", {0,6,1,2,3,4,5,6,7,8}, "photo.jpg");
+	Contact c1 = Contact("Doe", "John","google" ,"Doe.John@gmail.com", {0,6,1,2,3,4,5,6,7,8}, "photo.jpg");
 	Contact c2 = Contact(c1);
 	res = (c1==c2);
 	c2.setNom("Doe2");
@@ -22,7 +22,7 @@ bool testContact(){
 
 void testGestionContact(){
 //Test des différentes fonctions de la classe GestionContact
-	Contact c1 = Contact("Doe", "John", "Doe.John@gmail.com", {0,6,1,2,3,4,5,6,7,8}, "photo.jpg");
+	Contact c1 = Contact("Doe", "John","google" ,"Doe.John@gmail.com", {0,6,1,2,3,4,5,6,7,8}, "photo.jpg");
 	GestionContact gc1;
 	gc1.ajouteContact(c1);
 	Contact c2 = Contact();
@@ -43,9 +43,8 @@ int main()
 	//testGestionContact();
 
 
-	//GestionContact.cpp: fonction retire contact: retirer (ou modifier) la boucle en commentaire
-	//Ajouter updateDateInteraction dans contact (et décommenter ajouteInteraction/retireInteraction)
-	//Ajouter SupprimerElt dans LienInterTache
+	//tester ajout/sup gestioncontact/gestionLien operator +=/-=
+
 	return 0;
 }
 

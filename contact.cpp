@@ -3,6 +3,7 @@
 Contact::Contact(){
     this->nom = "";
     this->prenom = "";
+    this->entreprise = "";
     this->mail = "";
     this->telephone = std::list<unsigned>();
     this->photo = "";
@@ -14,9 +15,10 @@ Contact::Contact(){
     this->li = std::list<Interaction>();
 }
 
-Contact::Contact(std::string nom, std::string prenom, std::string mail, std::list<unsigned> telephone, std::string photo){
+Contact::Contact(std::string nom, std::string prenom,std::string entreprise ,std::string mail, std::list<unsigned> telephone, std::string photo){
     this->nom = nom;
     this->prenom = prenom;
+    this->entreprise = entreprise;
     this->mail = mail;
     this->telephone = telephone;
     this->photo = photo;
@@ -31,6 +33,7 @@ Contact::Contact(std::string nom, std::string prenom, std::string mail, std::lis
 Contact::Contact(const Contact& c){
     this->nom = c.nom;
     this->prenom = c.prenom;
+    this->entreprise = c.entreprise;
     this->mail = c.mail;
     this->telephone = c.telephone;
     this->photo = c.photo;
@@ -49,6 +52,10 @@ std::string Contact::getNom(){
 
 std::string Contact::getPrenom(){
     return this->prenom;
+}
+
+std::string Contact::getEntreprise(){
+    return this->entreprise;
 }
 
 std::string Contact::getMail(){
@@ -83,6 +90,10 @@ void Contact::setPrenom(std::string prenom){
     this->prenom = prenom;
 }
 
+void Contact::setEntreprise(std::string entreprise){
+    this->entreprise = entreprise;
+}
+
 void Contact::setMail(std::string mail){
     this->mail = mail;
 }
@@ -107,23 +118,26 @@ void Contact::setDateModification(sdate dateModification){
     this->dateModification = dateModification;
 }
 
+void Contact::updateModification(){
+    time_t t = time(0);//nb sec depuis 1970
+    tm * ltm = localtime(&t);//conversion
+    this->dateModification = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
+}
+
 void Contact::ajouteInteraction(Interaction i){
     //Ajoute une interaction à la fin de la liste
 	this->li.push_back(i);
-    //this->setDateModification();
+    this->updateModification();
 }
 void Contact::retireInteraction(Interaction i){
     //Retire une interaction de la liste
-    for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
-        if (i==*it){
-            this->li.erase(it);
-            break;
-        }
-    }
+    this->li.remove(i);
+    this->updateModification();
 }
 std::ostream& operator<<(std::ostream& os, const Contact& contact){
     os << "Nom: " << contact.nom << std::endl;
     os << "Prenom: " << contact.prenom << std::endl;
+    os << "Entreprise: " << contact.entreprise << std::endl;
     os << "Mail: " << contact.mail << std::endl;
     os << "Telephone: ";
     for (std::list<unsigned>::const_iterator it = contact.telephone.begin(); it != contact.telephone.end(); ++it){
@@ -144,6 +158,7 @@ std::ostream& operator<<(std::ostream& os, const Contact& contact){
 bool Contact::operator==(const Contact& contact){
     return  this->nom == contact.nom &&
             this->prenom == contact.prenom &&
+            this->entreprise == contact.entreprise &&
             this->mail == contact.mail &&
             this->telephone == contact.telephone &&
             this->photo == contact.photo &&

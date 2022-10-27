@@ -4,15 +4,16 @@
 
 class LienInterTache{
 	private:
-		std::list<Interaction> li;
-		std::list<Tache> lt;
+		Interaction* i;
+		Tache* t;
 	public:
 		LienInterTache();
-		LienInterTache(std::list<Interaction> li, std::list<Tache> lt);
+		LienInterTache(Interaction* i, Tache* t);
 		LienInterTache(const LienInterTache& lit);
 		~LienInterTache();
-		std::list<Interaction> getLi();
-		std::list<Tache> getLt();
+		Interaction* getI();
+		Tache* getT();
+		void setI(Interaction* i);
+		void setT(Tache* t);
 		friend std::ostream& operator<<(std::ostream& os, const LienInterTache& lientache);
-		void ajouteElt(Interaction i);
 };

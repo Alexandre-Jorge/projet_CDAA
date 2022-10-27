@@ -1,46 +1,47 @@
 #include "lienintertache.h"
 
 LienInterTache::LienInterTache(){
-	this->li = std::list<Interaction>();
-	this->lt = std::list<Tache>();
+	this->i = nullptr;
+	this->t = nullptr;
 }
 
-LienInterTache::LienInterTache(std::list<Interaction> li, std::list<Tache> lt){
-	this->li = li;
-	this->lt = lt;
+LienInterTache::LienInterTache(Interaction* i, Tache* t){
+	this->i = i;
+	this->t = t;
 }
 
 LienInterTache::LienInterTache(const LienInterTache& lit){
-	this->li = lit.li;
-	this->lt = lit.lt;
+	this->i = lit.i;
+	this->t = lit.t;
 }
 
 LienInterTache::~LienInterTache(){
+	delete this->i;
+	delete this->t;
 }
 
+Interaction* LienInterTache::getI(){
+	return this->i;
+}
 
-void LienInterTache::ajouteElt(Interaction i){
-	//Ajoute une interaction et sa tache liée aux listes
-	this->li.push_back(i);
-	//Detecte si le contenu de l'interaction contient une tache
-	std::string ex = "@todo";
-	std::string ss = i.getContenu().substr(0,5);
-	if (ss.compare(ex)==0){
-		//Detecte si la tache contient une date
-		ex = "@date";
-		int n = i.getContenu().rfind(ex);
-		if (n==i.getContenu().npos){
-			//Si @date n'existe pas
-			this->lt.push_back(Tache(i.getContenu()));
-		}
-		else{
-			//Si @date existe
-			this->lt.push_back(Tache(i.getContenu(),i.getDateInteract()));
-		}			
-	}
-	else{
-		//Aucune tache détectée, donc l'interaction est lié à une tache vide
-		this->lt.push_back(Tache());
-	}
+Tache* LienInterTache::getT(){
+	return this->t;
+}
+
+void LienInterTache::setI(Interaction* i){
+	this->i = i;
+}
+
+void LienInterTache::setT(Tache* t){
+	this->t = t;
+}
+
+std::ostream& operator<<(std::ostream& os, const LienInterTache& lientache){
+	os << "LienInterTache : " << std::endl;
+	os << "Interaction : " << std::endl;
+	os << *lientache.i << std::endl;
+	os << "Tache : " << std::endl;
+	os << *lientache.t << std::endl;
+	return os;
 }
 
