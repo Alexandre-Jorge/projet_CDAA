@@ -11,4 +11,4 @@ struct sdate{
                 annee==d.annee;
     }
 };
-#endif
+#endif /* sdate_h */

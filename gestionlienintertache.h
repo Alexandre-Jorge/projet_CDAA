@@ -13,6 +13,7 @@ class GestionLienIntertache{
         void setLit(std::list<LienInterTache> lit);
         void ajouteLien(LienInterTache lit);
         void retireLien(LienInterTache lit);
+        void retireLien(Interaction* i);
         void retireLien(int i);
         LienInterTache getLien(int i);
         void creeLien(Interaction* i);

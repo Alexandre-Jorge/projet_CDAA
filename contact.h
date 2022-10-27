@@ -30,6 +30,7 @@ class Contact{
         sdate getDateCreation();
         sdate getDateModification();
         std::list<Interaction> getLi();
+        Interaction* getInteraction(int i);
         void setNom(std::string nom);
         void setPrenom(std::string prenom);
         void setEntreprise(std::string entreprise);

@@ -16,4 +16,5 @@ class LienInterTache{
 		void setI(Interaction* i);
 		void setT(Tache* t);
 		friend std::ostream& operator<<(std::ostream& os, const LienInterTache& lientache);
+		bool operator==(const LienInterTache& lientache);
 };

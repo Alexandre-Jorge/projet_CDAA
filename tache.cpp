@@ -40,6 +40,12 @@ void Tache::setDate(sdate date){
 	this->date=date;
 }
 
+std::ostream& operator<<(std::ostream& os, const Tache& tache){
+	os << "Description de la tache : " << tache.desc << std::endl;
+	os << "Date de la tache : " << tache.date.jour << "/" << tache.date.mois << "/" << tache.date.annee << std::endl;
+	return os;
+}
+
 bool Tache::operator==(const Tache& t){
 	return this->desc==t.desc && this->date==t.date;
 }

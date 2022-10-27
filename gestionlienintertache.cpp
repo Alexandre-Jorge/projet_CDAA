@@ -31,6 +31,14 @@ void GestionLienIntertache::retireLien(LienInterTache lit){
     this->lit.remove(lit);
 }
 
+void GestionLienIntertache::retireLien(Interaction* i){
+    for (int j=0;j<lit.size();j++){
+        if(this->getLien(j).getI() == i){
+            this->retireLien(this->getLien(j));
+        }
+    }
+}
+
 void GestionLienIntertache::retireLien(int i){
     this->retireLien(this->getLien(i));
 }
@@ -60,18 +68,21 @@ void GestionLienIntertache::creeLien(Interaction* i){
 		int n = i->getContenu().rfind(ex);
 		if (n==i->getContenu().npos){
 			//Si @date n'existe pas
-			lien.setT(new Tache(i->getContenu()));
+			lien.setT(new Tache(i->getContenu().substr(6,i->getContenu().size()-6)));//contenu de la tache sans le @todo
 		}
 		else{
-			//Si @date existe
-			lien.setT(new Tache(i->getContenu(),i->getDateInteract()));
-		}		
+			//Si @date existe convertit le texte "jj/mm/aaaa" en 3 unsigned int utilisé pour créé la date
+            unsigned int j = std::stoi(i->getContenu().substr(n+6,2),nullptr,10);
+            unsigned int m = std::stoi(i->getContenu().substr(n+9,2),nullptr,10);
+            unsigned int a = std::stoi(i->getContenu().substr(n+12,4),nullptr,10);
+			lien.setT(new Tache(i->getContenu().substr(6,n-6),{j,m,a}));//contenu de la tache sans le @todo et @date + date
+		}
 	}
 	else{
 		//Aucune tache détectée, donc l'interaction est lié à une tache vide
 		lien.setT(new Tache());
     }
-	this->lit.push_back(lien);
+	this->ajouteLien(lien);
 }
 
 std::ostream& operator<<(std::ostream& os, const GestionLienIntertache& glit){

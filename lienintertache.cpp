@@ -16,8 +16,8 @@ LienInterTache::LienInterTache(const LienInterTache& lit){
 }
 
 LienInterTache::~LienInterTache(){
-	delete this->i;
-	delete this->t;
+	/*delete this->i;
+	delete this->t;*/
 }
 
 Interaction* LienInterTache::getI(){
@@ -45,3 +45,6 @@ std::ostream& operator<<(std::ostream& os, const LienInterTache& lientache){
 	return os;
 }
 
+bool LienInterTache::operator==(const LienInterTache& lientache){
+	return (this->i == lientache.i && this->t == lientache.t);
+}

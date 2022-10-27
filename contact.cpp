@@ -82,6 +82,17 @@ std::list<Interaction> Contact::getLi(){
     return this->li;
 }
 
+Interaction* Contact::getInteraction(int i){
+    int j=0;
+	for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
+        if (i==j){
+            return &(*it);
+        }
+		j++;
+    }
+	return new Interaction();//todo throws execption
+}
+
 void Contact::setNom(std::string nom){
     this->nom = nom;
 }
@@ -109,6 +120,7 @@ void Contact::setPhoto(std::string photo){
 void Contact::setDateCreation(sdate dateCreation){
     this->dateCreation = dateCreation;
 }
+
 
 void Contact::setLi(std::list<Interaction> li){
     this->li = li;
@@ -147,9 +159,9 @@ std::ostream& operator<<(std::ostream& os, const Contact& contact){
     os << "Photo: " << contact.photo << std::endl;
     os << "Date de creation: " << contact.dateCreation.jour << "/" << contact.dateCreation.mois << "/" << contact.dateCreation.annee <<std::endl;
     os << "Date de Modification: " << contact.dateModification.jour << "/" << contact.dateModification.mois << "/" << contact.dateModification.annee <<std::endl;
-    os << "Liste d'interactions: ";
+    os << "Liste d'interactions: " << std::endl;
     for (std::list<Interaction>::const_iterator it = contact.li.begin(); it != contact.li.end(); ++it){
-        os << *it;
+        os << "\t" << *it;
     }
     os << std::endl;
     return os;

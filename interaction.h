@@ -1,19 +1,22 @@
+#ifndef interaction_h
+#define interaction_h
 #include <iostream>
 #include "sdate.h"
-
 class Interaction{
     private:
-        sdate dateInteract;
         std::string contenu;
+        sdate dateInteract;
     public:
         Interaction();
-        Interaction(const sdate dateInteract,const std::string contenu);
+        Interaction(const std::string contenu);
+        Interaction(const std::string contenu, const sdate dateInteract);
         Interaction(const Interaction& interaction);
         ~Interaction();
-        sdate getDateInteract();
         std::string getContenu();
-        void setDateInteract(sdate dateInteract);
+        sdate getDateInteract();
         void setContenu(std::string contenu);
+        void setDateInteract(sdate dateInteract);
         friend std::ostream& operator<<(std::ostream& os, const Interaction& interaction);
         bool operator==(const Interaction& interaction);
 };
+#endif /* interaction_h */
