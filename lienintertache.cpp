@@ -16,8 +16,6 @@ LienInterTache::LienInterTache(const LienInterTache& lit){
 }
 
 LienInterTache::~LienInterTache(){
-	/*delete this->i;
-	delete this->t;*/
 }
 
 Interaction* LienInterTache::getI(){
