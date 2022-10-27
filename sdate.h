@@ -1,10 +1,13 @@
 #ifndef sdate_h
 #define sdate_h
 struct sdate{
-    unsigned int jour;
-    unsigned int mois;
-    unsigned int annee;
+    unsigned int jour; //!<Jour JJ
+    unsigned int mois; //!<Mois MM
+    unsigned int annee; //!<Année AAAA
 
+    /// @brief Compare deux dates si elles sont identiques ou non.
+    /// @param d sdate
+    /// @return bool
     inline bool operator==(sdate d){
         return  jour==d.jour &&
                 mois==d.mois &&

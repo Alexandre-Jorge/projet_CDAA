@@ -4,8 +4,8 @@
 
 class LienInterTache{
 	private:
-		Interaction* i;
-		Tache* t;
+		Interaction* i; //!<Pointeur d'une interaction
+		Tache* t; //!<Pointeur d'une tache
 	public:
 		LienInterTache();
 		LienInterTache(Interaction* i, Tache* t);

@@ -51,6 +51,9 @@ std::ostream& operator<<(std::ostream& os, const Interaction& interaction){
         return os;
 }
 
+/// @brief Compare deux interactions si elles sont identique ou non.
+/// @param interaction Interaction&
+/// @return bool
 bool Interaction::operator==(const Interaction& interaction){
     return  this->dateInteract == interaction.dateInteract &&
             this->contenu == interaction.contenu;

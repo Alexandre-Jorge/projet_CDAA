@@ -82,6 +82,9 @@ std::list<Interaction> Contact::getLi(){
     return this->li;
 }
 
+/// @brief Renvoie l'interaction à l'indice i de la liste li.
+/// @param i int
+/// @return Interaction*
 Interaction* Contact::getInteraction(int i){
     int j=0;
 	for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
@@ -130,25 +133,29 @@ void Contact::setDateModification(sdate dateModification){
     this->dateModification = dateModification;
 }
 
+/// @brief Met à jour la dateModification à aujourd'hui
 void Contact::updateModification(){
     time_t t = time(0);//nb sec depuis 1970
     tm * ltm = localtime(&t);//conversion
     this->dateModification = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
 }
 
+/// @brief Ajoute l'interaction i à la fin de la liste li.
+/// @param i Interaction
 void Contact::ajouteInteraction(Interaction i){
-    //Ajoute une interaction à la fin de la liste
 	this->li.push_back(i);
     this->updateModification();
 }
+/// @brief Retire l'interaction i de la liste li.
+/// @param i Interaction
 void Contact::retireInteraction(Interaction i){
-    //Retire une interaction de la liste
     this->li.remove(i);
     this->updateModification();
 }
 
+/// @brief Retire l'interaction à l'indice i de la liste li.
+/// @param i int
 void Contact::retireInteraction(int i){
-    //Retire une interaction de la liste
     int j=0;
     for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
         if (i==j){
@@ -181,6 +188,9 @@ std::ostream& operator<<(std::ostream& os, const Contact& contact){
     return os;
 }
 
+/// @brief Compare 2 contact si ils sont identiques ou non.
+/// @param contact Contact
+/// @return bool
 bool Contact::operator==(const Contact& contact){
     return  this->nom == contact.nom &&
             this->prenom == contact.prenom &&

@@ -45,6 +45,9 @@ std::ostream& operator<<(std::ostream& os, const LienInterTache& lientache){
 	return os;
 }
 
+/// @brief Compare deux LienInterTache si ils sont identiques ou non
+/// @param lientache LienInterTache&
+/// @return bool
 bool LienInterTache::operator==(const LienInterTache& lientache){
 	return (this->i == lientache.i && this->t == lientache.t);
 }

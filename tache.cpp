@@ -46,6 +46,9 @@ std::ostream& operator<<(std::ostream& os, const Tache& tache){
 	return os;
 }
 
+/// @brief Compare deux taches si elles sont identiques ou non.
+/// @param t Tache&
+/// @return bool
 bool Tache::operator==(const Tache& t){
 	return this->desc==t.desc && this->date==t.date;
 }

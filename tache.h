@@ -5,8 +5,8 @@
 
 class Tache{
 	private:
-		std::string desc;
-		struct sdate date;
+		std::string desc; //!<Description de la tache
+		struct sdate date; //!<Date à laquelle effectuer la tache
 	public:
 		Tache();
 		Tache(std::string desc);

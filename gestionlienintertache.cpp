@@ -23,14 +23,20 @@ void GestionLienIntertache::setLit(std::list<LienInterTache> lit){
     this->lit = lit;
 }
 
+/// @brief Ajoute le LienInterTache passé en paramètre à la liste lit.
+/// @param lit LienInterTache
 void GestionLienIntertache::ajouteLien(LienInterTache lit){
     this->lit.push_back(lit);
 }
 
+/// @brief Retire le LienInterTache passé en paramètre de la liste lit.
+/// @param lit 
 void GestionLienIntertache::retireLien(LienInterTache lit){
     this->lit.remove(lit);
 }
 
+/// @brief Retire le LienInterTache associé à l'interaction i.
+/// @param i Interaction*
 void GestionLienIntertache::retireLien(Interaction* i){
     for (int j=0;j<lit.size();j++){
         if(this->getLien(j).getI() == i){
@@ -43,6 +49,9 @@ void GestionLienIntertache::retireLien(int i){
     this->retireLien(this->getLien(i));
 }
 
+/// @brief Renvoie le LienInterTache à l'indice i de la liste lit.
+/// @param i int
+/// @return LienInterTache
 LienInterTache GestionLienIntertache::getLien(int i){
     //Renvoie le lien à l'indice i de la liste
 	int j=0;
@@ -55,9 +64,15 @@ LienInterTache GestionLienIntertache::getLien(int i){
 	return LienInterTache();//todo throws execption
 }
 
+
+/** @brief  Permet la création d'un lien liant l'interaction passée en paramètre ainsi que la tache
+ *          associée.
+ *          Détection automatique du contenu de l'interaction pour créer la tache équivalente.
+
+ @param i
+*/
 void GestionLienIntertache::creeLien(Interaction* i){
     //Crée un lien entre une interaction et une tache
-    //todo
     LienInterTache lien = LienInterTache(i, nullptr);
 	//Detecte si le contenu de l'interaction contient une tache
 	std::string ex = "@todo";
@@ -84,7 +99,7 @@ void GestionLienIntertache::creeLien(Interaction* i){
     }
 	this->ajouteLien(lien);
 }
-
+ 
 std::ostream& operator<<(std::ostream& os, const GestionLienIntertache& glit){
     for (std::list<LienInterTache>::const_iterator it = glit.lit.begin(); it != glit.lit.end(); ++it){
         os << *it << std::endl;
@@ -92,11 +107,17 @@ std::ostream& operator<<(std::ostream& os, const GestionLienIntertache& glit){
     return os;
 }
 
+/// @brief Opérateur permettant d'ajouter un LienInterTache
+/// @param lientache LienInterTache
+/// @return GestionLienInterTache
 GestionLienIntertache GestionLienIntertache::operator+=(const LienInterTache& lientache){
     this->ajouteLien(lientache);
     return *this;
 }
 
+/// @brief Opérateur permettant de retirer un LienInterTache
+/// @param lientache LienInterTache
+/// @return GestionLienIntertache
 GestionLienIntertache GestionLienIntertache::operator-=(const LienInterTache& lientache){
     this->retireLien(lientache);
     return *this;

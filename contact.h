@@ -7,15 +7,15 @@
 
 class Contact{
     private:
-        std::string nom;
-        std::string prenom;
-        std::string entreprise;
-        std::string mail;
-        std::list<unsigned> telephone;
-        std::string photo;
-        struct sdate dateCreation;
-        struct sdate dateModification;
-        std::list<Interaction> li;
+        std::string nom; //!<Nom du contact
+        std::string prenom; //!<Prénom du contact
+        std::string entreprise; //!<Nom de l'entreprise
+        std::string mail; //!<Addresse email
+        std::list<unsigned> telephone; //!<Liste unsigned du numéro de téléphone
+        std::string photo; //!<URL de la photo
+        struct sdate dateCreation; //!<Date de création du contact
+        struct sdate dateModification; //!<Date de dernière modification du contact
+        std::list<Interaction> li; //!<Liste des interactions du contact
     public:
         Contact();
         Contact(std::string nom, std::string prenom,std::string entreprise ,std::string mail, std::list<unsigned> telephone, std::string photo);
