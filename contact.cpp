@@ -146,6 +146,20 @@ void Contact::retireInteraction(Interaction i){
     this->li.remove(i);
     this->updateModification();
 }
+
+void Contact::retireInteraction(int i){
+    //Retire une interaction de la liste
+    int j=0;
+    for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
+        if (i==j){
+            this->li.remove(*it);
+            this->updateModification();
+            return;
+        }
+        j++;
+    }
+}
+
 std::ostream& operator<<(std::ostream& os, const Contact& contact){
     os << "Nom: " << contact.nom << std::endl;
     os << "Prenom: " << contact.prenom << std::endl;

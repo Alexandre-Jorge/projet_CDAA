@@ -43,6 +43,7 @@ class Contact{
         void updateModification();
         void ajouteInteraction(Interaction i);
         void retireInteraction(Interaction i);
+        void retireInteraction(int i);
         friend std::ostream& operator<<(std::ostream& os, const Contact& contact);
         bool operator==(const Contact& contact);
 };

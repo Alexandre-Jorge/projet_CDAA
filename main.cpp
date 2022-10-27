@@ -65,6 +65,10 @@ void testInteraction(){
 	gli1.creeLien(c1.getInteraction(1));//cree le lien Interaction Tache
 	cout << "gli1 : " << gli1 << endl;//affiche la liste de lien
 	cout << "c1 : " << c1 << endl;//affiche le contact c1
+	gli1.retireLien(c1.getInteraction(0));//retire le lien de la liste de lien
+	c1.retireInteraction(0);//retire l'interaction du contact via un indice
+	cout << "gli1 : " << gli1 << endl;//affiche la liste de lien
+	cout << "c1 : " << c1 << endl;//affiche le contact c1
 }
 
 int main()
