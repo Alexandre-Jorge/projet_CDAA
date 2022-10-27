@@ -1,6 +1,6 @@
 #include "contact.h"
 
-Contact::Contact(){
+Contact::Contact(){//constructeur par defaut
     this->nom = "";
     this->prenom = "";
     this->entreprise = "";
