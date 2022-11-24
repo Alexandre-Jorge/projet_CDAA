@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 
 #include <QApplication>
-#include "gestioncontact.h"
-#include "gestionlienintertache.h"
 using namespace std;
 
 bool testContact(){
@@ -74,16 +72,18 @@ void testInteraction(){
     cout << "c1 : " << c1 << endl;//affiche le contact c1
 }
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
+void appelTest(){
     cout << "testContact : " << testContact() << endl;
     testGestionContact();
     testInteraction();
-
+}
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    GestionContact listeContact;
+    GestionLienIntertache listeLienInterTache;
+    MainWindow w;
+    w.show();
 
     //-- todo -- //
     //gerer toutes les exceptions y compris dans les setteurs
