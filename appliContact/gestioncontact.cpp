@@ -67,14 +67,14 @@ void GestionContact::retireContact(int i){
 /// @param i int
 /// @return Contact
 Contact GestionContact::getContact(int i){
-	int j=0;
-	for (std::list<Contact>::iterator it = this->lc.begin(); it != this->lc.end(); ++it){
+    int j=0;
+    for (std::list<Contact>::iterator it = this->lc.begin(); it != this->lc.end(); ++it){
         if (i==j){
             return *it;
         }
 		j++;
     }
-	return Contact();//todo throws exception
+    return Contact();//todo throws exception
 }
 
 std::ostream& operator<<(std::ostream& os, const GestionContact& gc){

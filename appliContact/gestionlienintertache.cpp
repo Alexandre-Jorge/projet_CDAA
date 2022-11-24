@@ -38,7 +38,7 @@ void GestionLienIntertache::retireLien(LienInterTache lit){
 /// @brief Retire le LienInterTache associé à l'interaction i.
 /// @param i Interaction*
 void GestionLienIntertache::retireLien(Interaction* i){
-    for (int j=0;j<lit.size();j++){
+    for (unsigned long j=0;j<lit.size();j++){
         if(this->getLien(j).getI() == i){
             this->retireLien(this->getLien(j));
         }
@@ -80,7 +80,7 @@ void GestionLienIntertache::creeLien(Interaction* i){
 	if (ss.compare(ex)==0){
 		//Detecte si la tache contient une date
 		ex = "@date";
-		int n = i->getContenu().rfind(ex);
+        unsigned long n = i->getContenu().rfind(ex);
 		if (n==i->getContenu().npos){
 			//Si @date n'existe pas
 			lien.setT(new Tache(i->getContenu().substr(6,i->getContenu().size()-6)));//contenu de la tache sans le @todo
@@ -99,7 +99,7 @@ void GestionLienIntertache::creeLien(Interaction* i){
     }
 	this->ajouteLien(lien);
 }
- 
+
 std::ostream& operator<<(std::ostream& os, const GestionLienIntertache& glit){
     for (std::list<LienInterTache>::const_iterator it = glit.lit.begin(); it != glit.lit.end(); ++it){
         os << *it << std::endl;

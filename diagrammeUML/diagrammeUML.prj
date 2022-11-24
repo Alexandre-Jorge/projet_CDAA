@@ -1,6 +1,6 @@
 format 224
 "diagrammeUML"
-  revision 1
+  revision 2
   modified_by 2 "alex"
 
 
@@ -65,7 +65,7 @@ format 224
     activitydiagramsettings
      end
     classdiagram 128002 "CDAA_contactApp"
-      classdiagramsettings hide_attributes no hide_operations no hide_getset_operations yes hide_ports no show_members_full_definition yes show_members_visibility yes show_members_stereotype no member_max_width 0 class_drawing_mode class end
+      classdiagramsettings draw_all_relations no hide_attributes no hide_operations no hide_getset_operations yes hide_ports no show_members_full_definition yes show_members_visibility yes show_members_stereotype no member_max_width 0 class_drawing_mode class end
       class_color gray 
       size A4
     end
