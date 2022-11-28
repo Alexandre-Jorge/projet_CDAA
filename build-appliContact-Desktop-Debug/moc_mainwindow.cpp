@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[12];
-    char stringdata0[90];
+    QByteArrayData data[11];
+    char stringdata0[78];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,18 +37,17 @@ QT_MOC_LITERAL(1, 11, 18), // "affichagePrincipal"
 QT_MOC_LITERAL(2, 30, 0), // ""
 QT_MOC_LITERAL(3, 31, 20), // "affichageCreeContact"
 QT_MOC_LITERAL(4, 52, 11), // "creeContact"
-QT_MOC_LITERAL(5, 64, 11), // "std::string"
-QT_MOC_LITERAL(6, 76, 1), // "n"
-QT_MOC_LITERAL(7, 78, 2), // "pr"
-QT_MOC_LITERAL(8, 81, 1), // "e"
-QT_MOC_LITERAL(9, 83, 1), // "m"
-QT_MOC_LITERAL(10, 85, 1), // "t"
-QT_MOC_LITERAL(11, 87, 2) // "ph"
+QT_MOC_LITERAL(5, 64, 1), // "n"
+QT_MOC_LITERAL(6, 66, 2), // "pr"
+QT_MOC_LITERAL(7, 69, 1), // "e"
+QT_MOC_LITERAL(8, 71, 1), // "m"
+QT_MOC_LITERAL(9, 73, 1), // "t"
+QT_MOC_LITERAL(10, 75, 2) // "ph"
 
     },
     "MainWindow\0affichagePrincipal\0\0"
-    "affichageCreeContact\0creeContact\0"
-    "std::string\0n\0pr\0e\0m\0t\0ph"
+    "affichageCreeContact\0creeContact\0n\0"
+    "pr\0e\0m\0t\0ph"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,7 +72,7 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5,    6,    7,    8,    9,   10,   11,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,    5,    6,    7,    8,    9,   10,
 
        0        // eod
 };
@@ -86,7 +85,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->affichagePrincipal(); break;
         case 1: _t->affichageCreeContact(); break;
-        case 2: _t->creeContact((*reinterpret_cast< std::string(*)>(_a[1])),(*reinterpret_cast< std::string(*)>(_a[2])),(*reinterpret_cast< std::string(*)>(_a[3])),(*reinterpret_cast< std::string(*)>(_a[4])),(*reinterpret_cast< std::string(*)>(_a[5])),(*reinterpret_cast< std::string(*)>(_a[6]))); break;
+        case 2: _t->creeContact((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
         default: ;
         }
     }

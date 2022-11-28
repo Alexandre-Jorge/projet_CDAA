@@ -22,6 +22,6 @@ signals:
 public slots:
     void affichagePrincipal();
     void affichageCreeContact();
-    void creeContact(std::string n, std::string pr, std::string e, std::string m, std::string t, std::string ph);
+    void creeContact(QString n, QString pr, QString e, QString m, QString t, QString ph);
 };
 #endif // MAINWINDOW_H
