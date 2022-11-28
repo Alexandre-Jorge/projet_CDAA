@@ -3,6 +3,8 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QLabel>
+#include <QDebug>
+#include "attentevalidationthread.h"
 
 
 MainWindow::MainWindow(QWidget *parent, GestionContact * gc, GestionLienIntertache * glit)
@@ -64,12 +66,30 @@ void MainWindow::affichageCreeContact()
     Layout->addWidget(photoLineEdit);
     Layout->addWidget(boutValider);
     setCentralWidget(centralWidget);
-    ///TODO///
-    //connecter l'appui sur valider au slot creeContact en envoyant
-    //les data saisie dans les LineEdit
+
+    AttenteValidationThread * avt = new AttenteValidationThread(nomLineEdit,
+                                                                prenomLineEdit,
+                                                                entrepriseLineEdit,
+                                                                mailLineEdit,
+                                                                telLineEdit,
+                                                                photoLineEdit);
+    connect(avt, SIGNAL(finished()), avt, SLOT(deleteLater()));
+    connect(avt, SIGNAL(toCreeContact(QString, QString, QString, QString, QString, QString)), this, SLOT(creeContact(QString, QString, QString, QString, QString, QString)));
+    connect(boutValider, SIGNAL(clicked()), avt, SLOT(validation()));
+    avt->start();
 }
 
-void MainWindow::creeContact(std::string n, std::string pr, std::string e, std::string m, std::string t, std::string ph)
+void MainWindow::creeContact(QString n, QString pr, QString e, QString m, QString t, QString ph)
 {
-
+    ////TODO/////
+    // créer un contact avec les infos saisies
+    // ajouter le contact a la liste
+    // revenir sur l'affichage principale
+    // afficher le contact dans la liste sur l'affichage principal
+    qDebug() << n;
+    qDebug() << pr;
+    qDebug() << e;
+    qDebug() << m;
+    qDebug() << t;
+    qDebug() << ph;
 }

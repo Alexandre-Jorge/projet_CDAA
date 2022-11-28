@@ -52,15 +52,18 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../appliContact/main.cpp \
+SOURCES       = ../appliContact/attentevalidationthread.cpp \
+		../appliContact/main.cpp \
 		../appliContact/mainwindow.cpp \
 		../appliContact/contact.cpp \
 		../appliContact/gestioncontact.cpp \
 		../appliContact/gestionlienintertache.cpp \
 		../appliContact/interaction.cpp \
 		../appliContact/lienintertache.cpp \
-		../appliContact/tache.cpp moc_mainwindow.cpp
-OBJECTS       = main.o \
+		../appliContact/tache.cpp moc_attentevalidationthread.cpp \
+		moc_mainwindow.cpp
+OBJECTS       = attentevalidationthread.o \
+		main.o \
 		mainwindow.o \
 		contact.o \
 		gestioncontact.o \
@@ -68,6 +71,7 @@ OBJECTS       = main.o \
 		interaction.o \
 		lienintertache.o \
 		tache.o \
+		moc_attentevalidationthread.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -147,14 +151,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../appliContact/appliContact.pro ../appliContact/mainwindow.h \
+		../appliContact/appliContact.pro ../appliContact/attentevalidationthread.h \
+		../appliContact/mainwindow.h \
 		../appliContact/contact.h \
 		../appliContact/gestioncontact.h \
 		../appliContact/gestionlienintertache.h \
 		../appliContact/interaction.h \
 		../appliContact/lienintertache.h \
 		../appliContact/sdate.h \
-		../appliContact/tache.h ../appliContact/main.cpp \
+		../appliContact/tache.h ../appliContact/attentevalidationthread.cpp \
+		../appliContact/main.cpp \
 		../appliContact/mainwindow.cpp \
 		../appliContact/contact.cpp \
 		../appliContact/gestioncontact.cpp \
@@ -347,8 +353,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../appliContact/mainwindow.h ../appliContact/contact.h ../appliContact/gestioncontact.h ../appliContact/gestionlienintertache.h ../appliContact/interaction.h ../appliContact/lienintertache.h ../appliContact/sdate.h ../appliContact/tache.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../appliContact/main.cpp ../appliContact/mainwindow.cpp ../appliContact/contact.cpp ../appliContact/gestioncontact.cpp ../appliContact/gestionlienintertache.cpp ../appliContact/interaction.cpp ../appliContact/lienintertache.cpp ../appliContact/tache.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../appliContact/attentevalidationthread.h ../appliContact/mainwindow.h ../appliContact/contact.h ../appliContact/gestioncontact.h ../appliContact/gestionlienintertache.h ../appliContact/interaction.h ../appliContact/lienintertache.h ../appliContact/sdate.h ../appliContact/tache.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../appliContact/attentevalidationthread.cpp ../appliContact/main.cpp ../appliContact/mainwindow.cpp ../appliContact/contact.cpp ../appliContact/gestioncontact.cpp ../appliContact/gestionlienintertache.cpp ../appliContact/interaction.cpp ../appliContact/lienintertache.cpp ../appliContact/tache.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -380,10 +386,22 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_attentevalidationthread.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_attentevalidationthread.cpp moc_mainwindow.cpp
+moc_attentevalidationthread.cpp: ../appliContact/attentevalidationthread.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/alex/Documents/CDAA/Projet/projet_CDAA/build-appliContact-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/Documents/CDAA/Projet/projet_CDAA/appliContact -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../appliContact/attentevalidationthread.h -o moc_attentevalidationthread.cpp
+
 moc_mainwindow.cpp: ../appliContact/mainwindow.h \
+		../appliContact/gestioncontact.h \
+		../appliContact/contact.h \
+		../appliContact/interaction.h \
+		../appliContact/sdate.h \
+		../appliContact/gestionlienintertache.h \
+		../appliContact/lienintertache.h \
+		../appliContact/tache.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/alex/Documents/CDAA/Projet/projet_CDAA/build-appliContact-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/Documents/CDAA/Projet/projet_CDAA/appliContact -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../appliContact/mainwindow.h -o moc_mainwindow.cpp
@@ -404,6 +422,9 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ####### Compile
 
+attentevalidationthread.o: ../appliContact/attentevalidationthread.cpp ../appliContact/attentevalidationthread.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o attentevalidationthread.o ../appliContact/attentevalidationthread.cpp
+
 main.o: ../appliContact/main.cpp ../appliContact/mainwindow.h \
 		../appliContact/gestioncontact.h \
 		../appliContact/contact.h \
@@ -414,7 +435,15 @@ main.o: ../appliContact/main.cpp ../appliContact/mainwindow.h \
 		../appliContact/tache.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../appliContact/main.cpp
 
-mainwindow.o: ../appliContact/mainwindow.cpp ../appliContact/mainwindow.h
+mainwindow.o: ../appliContact/mainwindow.cpp ../appliContact/mainwindow.h \
+		../appliContact/gestioncontact.h \
+		../appliContact/contact.h \
+		../appliContact/interaction.h \
+		../appliContact/sdate.h \
+		../appliContact/gestionlienintertache.h \
+		../appliContact/lienintertache.h \
+		../appliContact/tache.h \
+		../appliContact/attentevalidationthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../appliContact/mainwindow.cpp
 
 contact.o: ../appliContact/contact.cpp ../appliContact/contact.h \
@@ -448,6 +477,9 @@ lienintertache.o: ../appliContact/lienintertache.cpp ../appliContact/lieninterta
 tache.o: ../appliContact/tache.cpp ../appliContact/tache.h \
 		../appliContact/sdate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tache.o ../appliContact/tache.cpp
+
+moc_attentevalidationthread.o: moc_attentevalidationthread.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_attentevalidationthread.o moc_attentevalidationthread.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
