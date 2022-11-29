@@ -20,6 +20,7 @@ class GestionContact{
         void retireContact(Contact c);
         void retireContact(int i);
         Contact getContact(int i);
+        int taille();
         friend std::ostream& operator<<(std::ostream& os, const GestionContact& gc);
         GestionContact operator+=(const Contact& contact);
         GestionContact operator-=(const Contact& contact);

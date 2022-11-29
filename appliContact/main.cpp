@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QDebug>
 using namespace std;
 
 bool testContact(){
@@ -80,9 +81,9 @@ void appelTest(){
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    GestionContact listeContact;
-    GestionLienIntertache listeLienInterTache;
-    MainWindow w;
+    GestionContact * listeContact = new GestionContact();
+    GestionLienIntertache * listeLienInterTache = new GestionLienIntertache();
+    MainWindow w(nullptr,listeContact,listeLienInterTache);
     w.show();
 
     //-- todo -- //

@@ -36,6 +36,14 @@ void GestionContact::setLc(std::list<Contact> lc){
     this->lc = lc;
 }
 
+sdate GestionContact::getDateModification(){
+    return this->dateModification;
+}
+
+void GestionContact::setDateModification(sdate dateModification){
+    this->dateModification = dateModification;
+}
+
 /// @brief Met à jour la dateModification à aujourd'hui
 void GestionContact::updateModification(){
 	time_t t = time(0);//nb sec depuis 1970
@@ -75,6 +83,10 @@ Contact GestionContact::getContact(int i){
 		j++;
     }
     return Contact();//todo throws exception
+}
+
+int GestionContact::taille(){
+    return this->lc.size();
 }
 
 std::ostream& operator<<(std::ostream& os, const GestionContact& gc){
