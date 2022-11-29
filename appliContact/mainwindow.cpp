@@ -4,9 +4,13 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QLabel>
+<<<<<<< HEAD
 #include <QImage>
 #include <QDebug>
 #include <exception>
+=======
+#include <QDebug>
+>>>>>>> d8656cc733c777f4b3202f8d9e8dc61c81894664
 #include "attentevalidationthread.h"
 
 
@@ -114,6 +118,7 @@ void MainWindow::affichageCreeContact()
     connect(avt, SIGNAL(toCreeContact(QString, QString, QString, QString, QString, QString)), this, SLOT(creeContact(QString, QString, QString, QString, QString, QString)));
     connect(boutValider, SIGNAL(clicked()), avt, SLOT(validation()));
     avt->start();
+<<<<<<< HEAD
 }
 
 void MainWindow::creeContact(QString n, QString pr, QString e, QString m, QString t, QString ph)
@@ -177,4 +182,21 @@ void MainWindow::affichageContact(QListWidgetItem* item)
     Layout->addWidget(boutModifier);
 
     setCentralWidget(centralWidget);
+=======
+}
+
+void MainWindow::creeContact(QString n, QString pr, QString e, QString m, QString t, QString ph)
+{
+    ////TODO/////
+    // créer un contact avec les infos saisies
+    // ajouter le contact a la liste
+    // revenir sur l'affichage principale
+    // afficher le contact dans la liste sur l'affichage principal
+    qDebug() << n;
+    qDebug() << pr;
+    qDebug() << e;
+    qDebug() << m;
+    qDebug() << t;
+    qDebug() << ph;
+>>>>>>> d8656cc733c777f4b3202f8d9e8dc61c81894664
 }

@@ -22,8 +22,13 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
+<<<<<<< HEAD
     QByteArrayData data[14];
     char stringdata0[133];
+=======
+    QByteArrayData data[11];
+    char stringdata0[78];
+>>>>>>> d8656cc733c777f4b3202f8d9e8dc61c81894664
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,6 +38,7 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
+<<<<<<< HEAD
 QT_MOC_LITERAL(1, 11, 20), // "toAffichagePrincipal"
 QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 18), // "affichagePrincipal"
@@ -52,6 +58,23 @@ QT_MOC_LITERAL(13, 130, 2) // "ph"
     "affichagePrincipal\0affichageCreeContact\0"
     "affichageContact\0QListWidgetItem*\0"
     "creeContact\0n\0pr\0e\0m\0t\0ph"
+=======
+QT_MOC_LITERAL(1, 11, 18), // "affichagePrincipal"
+QT_MOC_LITERAL(2, 30, 0), // ""
+QT_MOC_LITERAL(3, 31, 20), // "affichageCreeContact"
+QT_MOC_LITERAL(4, 52, 11), // "creeContact"
+QT_MOC_LITERAL(5, 64, 1), // "n"
+QT_MOC_LITERAL(6, 66, 2), // "pr"
+QT_MOC_LITERAL(7, 69, 1), // "e"
+QT_MOC_LITERAL(8, 71, 1), // "m"
+QT_MOC_LITERAL(9, 73, 1), // "t"
+QT_MOC_LITERAL(10, 75, 2) // "ph"
+
+    },
+    "MainWindow\0affichagePrincipal\0\0"
+    "affichageCreeContact\0creeContact\0n\0"
+    "pr\0e\0m\0t\0ph"
+>>>>>>> d8656cc733c777f4b3202f8d9e8dc61c81894664
 };
 #undef QT_MOC_LITERAL
 
@@ -83,8 +106,12 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+<<<<<<< HEAD
     QMetaType::Void, 0x80000000 | 6,    2,
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,    8,    9,   10,   11,   12,   13,
+=======
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,    5,    6,    7,    8,    9,   10,
+>>>>>>> d8656cc733c777f4b3202f8d9e8dc61c81894664
 
        0        // eod
 };
@@ -95,11 +122,17 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
+<<<<<<< HEAD
         case 0: _t->toAffichagePrincipal(); break;
         case 1: _t->affichagePrincipal(); break;
         case 2: _t->affichageCreeContact(); break;
         case 3: _t->affichageContact((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         case 4: _t->creeContact((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
+=======
+        case 0: _t->affichagePrincipal(); break;
+        case 1: _t->affichageCreeContact(); break;
+        case 2: _t->creeContact((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
+>>>>>>> d8656cc733c777f4b3202f8d9e8dc61c81894664
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
