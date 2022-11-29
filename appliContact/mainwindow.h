@@ -28,10 +28,7 @@ signals:
 public slots:
     void affichagePrincipal();
     void affichageCreeContact();
-<<<<<<< HEAD
     void affichageContact(QListWidgetItem*);
-=======
->>>>>>> d8656cc733c777f4b3202f8d9e8dc61c81894664
     void creeContact(QString n, QString pr, QString e, QString m, QString t, QString ph);
 };
 #endif // MAINWINDOW_H
