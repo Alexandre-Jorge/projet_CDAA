@@ -68,21 +68,21 @@ void GestionContact::retireContact(Contact c){
 /// @brief Retire le contact à l'indice i de la liste lc.
 /// @param i int
 void GestionContact::retireContact(int i){
-	this->retireContact(this->getContact(i));
+    this->retireContact(*(this->getContact(i)));
 }
 
 /// @brief Renvoie le contact à l'indice i de la liste lc.
 /// @param i int
 /// @return Contact
-Contact GestionContact::getContact(int i){
+Contact * GestionContact::getContact(int i){
     int j=0;
     for (std::list<Contact>::iterator it = this->lc.begin(); it != this->lc.end(); ++it){
         if (i==j){
-            return *it;
+            return &(*it);
         }
 		j++;
     }
-    return Contact();//todo throws exception
+    return new Contact();//todo throws exception
 }
 
 int GestionContact::taille(){

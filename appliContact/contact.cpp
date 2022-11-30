@@ -98,26 +98,32 @@ Interaction* Contact::getInteraction(int i){
 
 void Contact::setNom(std::string nom){
     this->nom = nom;
+    this->updateModification();
 }
 
 void Contact::setPrenom(std::string prenom){
     this->prenom = prenom;
+    this->updateModification();
 }
 
 void Contact::setEntreprise(std::string entreprise){
     this->entreprise = entreprise;
+    this->updateModification();
 }
 
 void Contact::setMail(std::string mail){
     this->mail = mail;
+    this->updateModification();
 }
 
 void Contact::setTelephone(std::list<unsigned> telephone){
     this->telephone = telephone;
+    this->updateModification();
 }
 
 void Contact::setPhoto(std::string photo){
     this->photo = photo;
+    this->updateModification();
 }
 
 void Contact::setDateCreation(sdate dateCreation){
@@ -127,6 +133,7 @@ void Contact::setDateCreation(sdate dateCreation){
 
 void Contact::setLi(std::list<Interaction> li){
     this->li = li;
+    this->updateModification();
 }
 
 void Contact::setDateModification(sdate dateModification){

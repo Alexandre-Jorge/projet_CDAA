@@ -29,6 +29,8 @@ public slots:
     void affichagePrincipal();
     void affichageCreeContact();
     void affichageContact(QListWidgetItem*);
-    void creeContact(QString n, QString pr, QString e, QString m, QString t, QString ph);
+    void creeContact(QString, QString, QString, QString, QString, QString);
+    void modifierContact(unsigned, QString, QString, QString, QString, QString, QString, QString);
+    void supprimerContact(unsigned);
 };
 #endif // MAINWINDOW_H
