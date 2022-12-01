@@ -8,13 +8,15 @@ class LienInterTache{
 		Tache* t; //!<Pointeur d'une tache
 	public:
 		LienInterTache();
-		LienInterTache(Interaction* i, Tache* t);
-		LienInterTache(const LienInterTache& lit);
+        LienInterTache(Interaction*, Tache*);
+        LienInterTache(const LienInterTache&);
 		~LienInterTache();
 		Interaction* getI();
 		Tache* getT();
-		void setI(Interaction* i);
-		void setT(Tache* t);
-		friend std::ostream& operator<<(std::ostream& os, const LienInterTache& lientache);
-		bool operator==(const LienInterTache& lientache);
+        void setI(Interaction*);
+        void setT(Tache*);
+        friend std::ostream& operator<<(std::ostream&, const LienInterTache&);
+        bool operator==(const LienInterTache&);
+        bool operator<(const LienInterTache&);
+        bool operator>(const LienInterTache&);
 };

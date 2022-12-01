@@ -183,13 +183,28 @@ void MainWindow::affichageContact(QListWidgetItem* item)
     QPushButton * boutSupprimer = new QPushButton("Supprimer", this);
     QPushButton * boutRetour = new QPushButton("Retour", this);
 
-    QLabel * interactionLabel    = new QLabel("Interactions");
+    QLabel * interactionLabel = new QLabel("Interactions");
     QTextEdit * interactionTextEdit = new QTextEdit();
-    std::list<Interaction> tmpLi = getListeContact()->getContact(item->listWidget()->row(item))->getLi();
+    /*std::list<Interaction> tmpLi = getListeContact()->getContact(item->listWidget()->row(item))->getLi();
     for (std::list<Interaction>::iterator it = tmpLi.begin(); it != tmpLi.end(); ++it){
         interactionTextEdit->append(QString::fromStdString(it->getContenu()));
+    }*/
+
+    for(int i=0; i<getListeContact()->getContact(item->listWidget()->row(item))->getGlit().taille();i++){
+        interactionTextEdit->append(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getI()->getContenu()));
     }
 
+    QLabel * tacheLabel = new QLabel("Liste de tâche");
+    QString listeTacheStr = "";
+    for(int i=0; i<getListeContact()->getContact(item->listWidget()->row(item))->getGlit().taille();i++){
+        if(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()!=nullptr){
+            listeTacheStr.append(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDesc()) + " "
+                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().jour) + "/"
+                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().mois) + "/"
+                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().annee) + "/n");
+        }
+    }
+    QLabel * listeTacheLabel = new QLabel(listeTacheStr);
     QFormLayout * Layout = new QFormLayout(centralWidget);
 
     Layout->addRow(boutRetour);
@@ -201,6 +216,7 @@ void MainWindow::affichageContact(QListWidgetItem* item)
     Layout->addRow(telLabel, telLineEdit);
     Layout->addRow(photoLabel, photoLineEdit);
     Layout->addRow(interactionLabel, interactionTextEdit);
+    Layout->addRow(tacheLabel, listeTacheLabel);
     Layout->addRow(boutModifier);
     Layout->addRow(boutSupprimer);
 
@@ -241,9 +257,15 @@ void MainWindow::modifierContact(unsigned i, QString n, QString pr, QString e, Q
     }
 
     QStringList interactions = in.split("\n");
-    std::list<Interaction> tmpLi = std::list<Interaction>();
+    /*std::list<Interaction> tmpLi = std::list<Interaction>();
     for(int i=0;i<interactions.size();i++){
         tmpLi.push_back(Interaction(interactions[i].toStdString()));
+    }*/
+
+    GestionLienIntertache tmpGlit = GestionLienIntertache();
+    for(int i=0;i<interactions.size();i++){
+        //tmpLi.push_back(Interaction(interactions[i].toStdString()));
+        tmpGlit.creeLien(new Interaction(interactions[i].toStdString()));
     }
 
     // modifier les infos du contact
@@ -253,7 +275,7 @@ void MainWindow::modifierContact(unsigned i, QString n, QString pr, QString e, Q
     this->getListeContact()->getContact(i)->setMail(m.toStdString());
     this->getListeContact()->getContact(i)->setTelephone(tel);
     this->getListeContact()->getContact(i)->setPhoto(ph.toStdString());
-    this->getListeContact()->getContact(i)->setLi(tmpLi);
+    this->getListeContact()->getContact(i)->setGlit(tmpGlit);
 
 
     emit(toAffichagePrincipal());

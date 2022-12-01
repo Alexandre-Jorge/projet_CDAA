@@ -6,23 +6,23 @@ class GestionContact{
         struct sdate dateModification;//!< date de modification, se met a jour avec un(e) ajout / suppression / modification
     public:
         GestionContact();
-        GestionContact(std::list<Contact> lc);
-        GestionContact(std::list<Contact> lc, sdate dateModification);
-        GestionContact(const GestionContact& gc);
+        GestionContact(std::list<Contact>);
+        GestionContact(std::list<Contact>, sdate);
+        GestionContact(const GestionContact&);
         ~GestionContact();
 
         std::list<Contact> getLc();
-        void setLc(std::list<Contact> lc);
+        void setLc(std::list<Contact>);
         sdate getDateModification();
-        void setDateModification(sdate dateModification);
+        void setDateModification(sdate);
         void updateModification();
-        void ajouteContact(Contact c);
-        void retireContact(Contact c);
-        void retireContact(int i);
-        Contact * getContact(int i);
+        void ajouteContact(Contact);
+        void retireContact(Contact);
+        void retireContact(int);
+        Contact * getContact(int);
         int taille();
-        friend std::ostream& operator<<(std::ostream& os, const GestionContact& gc);
-        GestionContact operator+=(const Contact& contact);
-        GestionContact operator-=(const Contact& contact);
+        friend std::ostream& operator<<(std::ostream&, const GestionContact&);
+        GestionContact operator+=(const Contact&);
+        GestionContact operator-=(const Contact&);
 
 };

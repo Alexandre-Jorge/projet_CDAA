@@ -2,7 +2,7 @@
 #include <ctime>
 #include <list>
 #include <chrono>
-#include "interaction.h"
+#include "gestionlienintertache.h"
 
 
 class Contact{
@@ -15,11 +15,12 @@ class Contact{
         std::string photo; //!<URL de la photo
         struct sdate dateCreation; //!<Date de création du contact
         struct sdate dateModification; //!<Date de dernière modification du contact
-        std::list<Interaction> li; //!<Liste des interactions du contact
+        //std::list<Interaction> li; //!<Liste des interactions du contact
+        GestionLienIntertache glit;
     public:
         Contact();
-        Contact(std::string nom, std::string prenom,std::string entreprise ,std::string mail, std::list<unsigned> telephone, std::string photo);
-        Contact(const Contact& c);
+        Contact(std::string, std::string, std::string, std::string, std::list<unsigned>, std::string);
+        Contact(const Contact&);
         ~Contact();
         std::string getNom();
         std::string getPrenom();
@@ -29,21 +30,20 @@ class Contact{
         std::string getPhoto();
         sdate getDateCreation();
         sdate getDateModification();
-        std::list<Interaction> getLi();
-        Interaction* getInteraction(int i);
-        void setNom(std::string nom);
-        void setPrenom(std::string prenom);
-        void setEntreprise(std::string entreprise);
-        void setMail(std::string mail);
-        void setTelephone(std::list<unsigned> telephone);
-        void setPhoto(std::string photo);
-        void setDateCreation(sdate dateCreation);
-        void setLi(std::list<Interaction> li);
-        void setDateModification(sdate dateModification);
+        GestionLienIntertache getGlit();
+        void setNom(std::string);
+        void setPrenom(std::string);
+        void setEntreprise(std::string);
+        void setMail(std::string);
+        void setTelephone(std::list<unsigned>);
+        void setPhoto(std::string);
+        void setDateCreation(sdate);
+        void setGlit(GestionLienIntertache);
+        void setDateModification(sdate);
         void updateModification();
-        void ajouteInteraction(Interaction i);
-        void retireInteraction(Interaction i);
-        void retireInteraction(int i);
-        friend std::ostream& operator<<(std::ostream& os, const Contact& contact);
-        bool operator==(const Contact& contact);
+        /*void ajouteInteraction(Interaction);
+        void retireInteraction(Interaction);
+        void retireInteraction(int);*/
+        friend std::ostream& operator<<(std::ostream&, const Contact&);
+        bool operator==(const Contact&);
 };

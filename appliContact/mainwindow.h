@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <QListWidget>
 #include "gestioncontact.h"
-#include "gestionlienintertache.h"
+//#include "gestionlienintertache.h"
 
 class MainWindow : public QMainWindow
 {
@@ -16,7 +16,7 @@ private:
     GestionLienIntertache * listeLienInterTache;
 
 public:
-    MainWindow(QWidget *parent = nullptr, GestionContact * gc = nullptr, GestionLienIntertache * glit = nullptr);
+    MainWindow(QWidget *, GestionContact *, GestionLienIntertache *);
     ~MainWindow();
     GestionContact * getListeContact();
     GestionLienIntertache * getListeLienInterTache();

@@ -46,7 +46,7 @@ void testGestionContact(){
 
 void testInteraction(){
     //Test du fonctionnement des interactions
-    Contact c1 = Contact("Doe", "John","google" ,"Doe.John@gmail.com", {0,6,1,2,3,4,5,6,7,8}, "photo.jpg");
+    /*Contact c1 = Contact("Doe", "John","google" ,"Doe.John@gmail.com", {0,6,1,2,3,4,5,6,7,8}, "photo.jpg");
     GestionLienIntertache gli1;
     c1.setDateModification({15,12,2022});//test setter date de modification afin de tester si une modification change bien la date de modification
     cout << "c1 : " << c1 << endl;//affiche le contact c1
@@ -70,7 +70,7 @@ void testInteraction(){
     gli1.retireLien(c1.getInteraction(0));//retire le lien de la liste de lien
     c1.retireInteraction(0);//retire l'interaction du contact via un indice
     cout << "gli1 : " << gli1 << endl;//affiche la liste de lien
-    cout << "c1 : " << c1 << endl;//affiche le contact c1
+    cout << "c1 : " << c1 << endl;//affiche le contact c1*/
 }
 
 void appelTest(){
@@ -89,4 +89,5 @@ int main(int argc, char *argv[])
     //-- todo -- //
     //gerer toutes les exceptions y compris dans les setteurs
     return a.exec();
+
 }

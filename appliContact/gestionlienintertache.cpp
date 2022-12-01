@@ -6,10 +6,12 @@ GestionLienIntertache::GestionLienIntertache(){
 
 GestionLienIntertache::GestionLienIntertache(std::list<LienInterTache> lit){
     this->lit = lit;
+    this->getLit().sort();
 }
 
 GestionLienIntertache::GestionLienIntertache(const GestionLienIntertache& glit){
     this->lit = glit.lit;
+    this->getLit().sort();
 }
 
 GestionLienIntertache::~GestionLienIntertache(){
@@ -21,12 +23,14 @@ std::list<LienInterTache> GestionLienIntertache::getLit(){
 
 void GestionLienIntertache::setLit(std::list<LienInterTache> lit){
     this->lit = lit;
+    this->getLit().sort();
 }
 
 /// @brief Ajoute le LienInterTache passé en paramètre à la liste lit.
 /// @param lit LienInterTache
 void GestionLienIntertache::ajouteLien(LienInterTache lit){
     this->lit.push_back(lit);
+    this->getLit().sort();
 }
 
 /// @brief Retire le LienInterTache passé en paramètre de la liste lit.
@@ -95,9 +99,14 @@ void GestionLienIntertache::creeLien(Interaction* i){
 	}
 	else{
 		//Aucune tache détectée, donc l'interaction est lié à une tache vide
-		lien.setT(new Tache());
+        lien.setT(nullptr);
     }
 	this->ajouteLien(lien);
+    this->getLit().sort();
+}
+
+int GestionLienIntertache::taille(){
+    return this->getLit().size();
 }
 
 std::ostream& operator<<(std::ostream& os, const GestionLienIntertache& glit){
@@ -105,6 +114,10 @@ std::ostream& operator<<(std::ostream& os, const GestionLienIntertache& glit){
         os << *it << std::endl;
     }
     return os;
+}
+
+GestionLienIntertache GestionLienIntertache::operator=(const GestionLienIntertache& lientache){
+    return lientache;
 }
 
 /// @brief Opérateur permettant d'ajouter un LienInterTache

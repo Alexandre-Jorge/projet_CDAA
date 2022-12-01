@@ -42,7 +42,7 @@ void Tache::setDate(sdate date){
 
 std::ostream& operator<<(std::ostream& os, const Tache& tache){
 	os << "Description de la tache : " << tache.desc << std::endl;
-	os << "Date de la tache : " << tache.date.jour << "/" << tache.date.mois << "/" << tache.date.annee << std::endl;
+    os << "Date de la tache : " << tache.date << std::endl;
 	return os;
 }
 

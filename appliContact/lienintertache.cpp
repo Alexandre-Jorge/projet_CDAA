@@ -51,3 +51,20 @@ std::ostream& operator<<(std::ostream& os, const LienInterTache& lientache){
 bool LienInterTache::operator==(const LienInterTache& lientache){
 	return (this->i == lientache.i && this->t == lientache.t);
 }
+
+bool LienInterTache::operator<(const LienInterTache& lientache){
+    if(lientache.t!=nullptr && this->getT()!=nullptr)
+        if(lientache.t->getDate() < this->getT()->getDate())
+            return true;
+    //return false;
+
+    ////TODO
+    // VOIR PROBELEME AVEC LE SORT()
+}
+
+bool LienInterTache::operator>(const LienInterTache& lientache){
+    if(lientache.t!=nullptr && this->getT()!=nullptr)
+        if(lientache.t->getDate() > this->getT()->getDate())
+            return true;
+    //return false;
+}

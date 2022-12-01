@@ -8,15 +8,15 @@ class Interaction{
         sdate dateInteract;//!< date de l'interaction, peut etre préciser avec @date
     public:
         Interaction();
-        Interaction(const std::string contenu);
-        Interaction(const std::string contenu, const sdate dateInteract);
-        Interaction(const Interaction& interaction);
+        Interaction(const std::string);
+        Interaction(const std::string, const sdate);
+        Interaction(const Interaction&);
         ~Interaction();
         std::string getContenu();
         sdate getDateInteract();
-        void setContenu(std::string contenu);
-        void setDateInteract(sdate dateInteract);
-        friend std::ostream& operator<<(std::ostream& os, const Interaction& interaction);
-        bool operator==(const Interaction& interaction);
+        void setContenu(std::string);
+        void setDateInteract(sdate);
+        friend std::ostream& operator<<(std::ostream&, const Interaction&);
+        bool operator==(const Interaction&);
 };
 #endif /* interaction_h */
