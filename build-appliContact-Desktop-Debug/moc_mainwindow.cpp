@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../appliContact/mainwindow.h"
+#include "../../../debug_Projet/projet_CDAA-master/appliContact/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

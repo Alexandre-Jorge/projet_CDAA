@@ -19,7 +19,6 @@ class GestionLienIntertache{
         void creeLien(Interaction*);
         int taille();
         friend std::ostream& operator<<(std::ostream&, const GestionLienIntertache&);
-        GestionLienIntertache operator=(const GestionLienIntertache&);
         GestionLienIntertache operator+=(const LienInterTache&);
         GestionLienIntertache operator-=(const LienInterTache&);
 };

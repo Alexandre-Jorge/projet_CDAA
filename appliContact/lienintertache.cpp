@@ -54,9 +54,9 @@ bool LienInterTache::operator==(const LienInterTache& lientache){
 
 bool LienInterTache::operator<(const LienInterTache& lientache){
     if(lientache.t!=nullptr && this->getT()!=nullptr)
-        if(lientache.t->getDate() < this->getT()->getDate())
+        if(this->getT()->getDate() < lientache.t->getDate())
             return true;
-    //return false;
+    return false;
 
     ////TODO
     // VOIR PROBELEME AVEC LE SORT()
@@ -64,7 +64,7 @@ bool LienInterTache::operator<(const LienInterTache& lientache){
 
 bool LienInterTache::operator>(const LienInterTache& lientache){
     if(lientache.t!=nullptr && this->getT()!=nullptr)
-        if(lientache.t->getDate() > this->getT()->getDate())
+        if(this->getT()->getDate() > lientache.t->getDate())
             return true;
-    //return false;
+    return false;
 }

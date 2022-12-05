@@ -201,7 +201,7 @@ void MainWindow::affichageContact(QListWidgetItem* item)
             listeTacheStr.append(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDesc()) + " "
                                                         + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().jour) + "/"
                                                         + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().mois) + "/"
-                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().annee) + "/n");
+                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().annee) + "\n");
         }
     }
     QLabel * listeTacheLabel = new QLabel(listeTacheStr);

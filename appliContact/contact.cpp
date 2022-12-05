@@ -129,7 +129,7 @@ void Contact::setDateCreation(sdate dateCreation){
 
 
 void Contact::setGlit(GestionLienIntertache glit){
-    this->glit = glit;
+    this->glit.setLit(glit.getLit());
     this->updateModification();
 }
 
