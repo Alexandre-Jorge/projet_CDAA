@@ -14,7 +14,7 @@ Contact::Contact(){//constructeur par defaut
     this->setDateModification({(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year});
 }
 
-Contact::Contact(std::string nom, std::string prenom,std::string entreprise ,std::string mail, std::list<unsigned> telephone, std::string photo){
+Contact::Contact(std::string nom, std::string prenom, std::string entreprise , std::string mail, std::list<unsigned> telephone, std::string photo){
     this->setNom(nom);
     this->setPrenom(prenom);
     this->setEntreprise(entreprise);
@@ -26,6 +26,18 @@ Contact::Contact(std::string nom, std::string prenom,std::string entreprise ,std
     this->setDateCreation({(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year});
     this->setGlit(GestionLienIntertache());
     this->setDateModification({(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year});
+}
+
+Contact::Contact(std::string nom, std::string prenom, std::string entreprise , std::string mail, std::list<unsigned> telephone, std::string photo, sdate dateC, sdate dateM){
+    this->setNom(nom);
+    this->setPrenom(prenom);
+    this->setEntreprise(entreprise);
+    this->setMail(mail);
+    this->setTelephone(telephone);
+    this->setPhoto(photo);
+    this->setDateCreation(dateC);
+    this->setGlit(GestionLienIntertache());
+    this->setDateModification(dateM);
 }
 
 Contact::Contact(const Contact& c){

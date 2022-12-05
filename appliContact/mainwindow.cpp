@@ -9,14 +9,17 @@
 #include <QDebug>
 #include <exception>
 #include "attentevalidationthread.h"
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QDate>
 
 
-MainWindow::MainWindow(QWidget *parent, GestionContact * gc, GestionLienIntertache * glit)
+MainWindow::MainWindow(QWidget *parent, GestionContact * gc)
     : QMainWindow(parent)
 {
     this->setMinimumWidth(400);
     setListeContact(gc);
-    setListeLienInterTache(glit);
+    connexionBDD();
 
     connect(this, SIGNAL(toAffichagePrincipal()), this, SLOT(affichagePrincipal()));
     emit(toAffichagePrincipal());
@@ -31,19 +34,20 @@ GestionContact* MainWindow::getListeContact()
     return this->listeContact;
 }
 
-GestionLienIntertache* MainWindow::getListeLienInterTache()
-{
-    return this->listeLienInterTache;
-}
 
 void MainWindow::setListeContact(GestionContact* gc)
 {
     this->listeContact = gc;
 }
 
-void MainWindow::setListeLienInterTache(GestionLienIntertache * glit)
+QSqlDatabase MainWindow::getDb()
 {
-    this->listeLienInterTache = glit;
+    return this->db;
+}
+
+void MainWindow::setDb(QSqlDatabase db)
+{
+    this->db = db;
 }
 
 
@@ -121,12 +125,7 @@ void MainWindow::creeContact(QString n, QString pr, QString e, QString m, QStrin
     //convertir le tel en std::list<unsigned>
     std::list<unsigned> tel = std::list<unsigned>();
     for(int i=0;i<t.size();i++){
-        for(int j=0;j<10;j++){
-            if(t.at(i)=='0'+j){
-                tel.push_back(j);
-                j=10;
-            }
-        }
+        tel.push_back((unsigned)(t.at(i).digitValue()));
     }
 
     // créer un contact avec les infos saisies
@@ -248,12 +247,7 @@ void MainWindow::modifierContact(unsigned i, QString n, QString pr, QString e, Q
     //convertir le tel en std::list<unsigned>
     std::list<unsigned> tel = std::list<unsigned>();
     for(int i=0;i<t.size();i++){
-        for(int j=0;j<10;j++){
-            if(t.at(i)=='0'+j){
-                tel.push_back(j);
-                j=10;
-            }
-        }
+        tel.push_back((unsigned)(t.at(i).digitValue()));
     }
 
     QStringList interactions = in.split("\n");
@@ -285,4 +279,78 @@ void MainWindow::supprimerContact(unsigned i)
 {
     this->getListeContact()->retireContact(i);
     emit(toAffichagePrincipal());
+}
+
+void MainWindow::connexionBDD()
+{
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("../DB_appliContact.sqlite");
+    QSqlQuery query;
+
+    if(!db.open())
+    {
+        qDebug() << "Pas de connexion BDD !";
+    }
+    else
+    {
+        qDebug() << "Connexion BDD ok";
+        query.prepare("SELECT * FROM contact");
+
+        if(!query.exec())
+        {
+            qDebug() << "Impossible d'exécuter la requête !";
+        }
+        else
+        {
+            qDebug() << "Requête exécutée";
+            while(query.next())
+            {
+                Contact c = Contact();
+                c.setNom(query.value(1).toString().toStdString());
+                c.setPrenom(query.value(2).toString().toStdString());
+                c.setEntreprise(query.value(3).toString().toStdString());
+                c.setMail(query.value(4).toString().toStdString());
+                std::list<unsigned> tel = std::list<unsigned>();
+                for(int i=0;i<query.value(5).toString().size();i++){
+                    tel.push_back((unsigned)(query.value(5).toString().at(i).digitValue()));
+                }
+                c.setTelephone(tel);
+                c.setPhoto(query.value(6).toString().toStdString());
+                c.setDateCreation({(unsigned)query.value(7).toDate().day(),(unsigned)query.value(7).toDate().month(),(unsigned)query.value(7).toDate().year()});
+                c.setDateModification({(unsigned)query.value(8).toDate().day(),(unsigned)query.value(8).toDate().month(),(unsigned)query.value(8).toDate().year()});
+                this->listeContact->ajouteContact(c);
+            }
+        }
+       query.prepare("select contact.id_contact, interaction.contenu, Interaction.dateinteract, Tache.desctache, Tache.datetache\
+                       from contact, LienInterTache, Interaction ,tache\
+                       where contact.id_lienintertache = LienInterTache.id_lienintertache\
+                       and LienInterTache.id_interaction = Interaction.id_interaction\
+                       and LienInterTache.id_tache = Tache.id_tache");
+        if(!query.exec())
+        {
+            qDebug() << "Impossible d'exécuter la requête !";
+        }
+        else
+        {
+            qDebug() << "Requête exécutée";
+            while(query.next())
+            {
+                /*qDebug() << "ID_Contact" <<  query.value(0).toInt();
+                qDebug() << "contenu" <<  query.value(1).toString();
+                qDebug() << "dateInteract" <<  query.value(2).toString();
+                qDebug() << "descTache" <<  query.value(3).toString();
+                qDebug() << "dateTache" <<  query.value(4).toString();*/
+                /*LienInterTache tmpLit = LienInterTache();
+                Interaction tmpI(query.value(1).toString().toStdString(), {(unsigned)query.value(2).toDate().day(),(unsigned)query.value(2).toDate().month(),(unsigned)query.value(2).toDate().year()});
+                Tache tmpT(query.value(3).toString().toStdString(), {(unsigned)query.value(4).toDate().day(),(unsigned)query.value(4).toDate().month(),(unsigned)query.value(4).toDate().year()});
+                tmpLit.setI(&tmpI);
+                tmpLit.setT(&tmpT);
+                std::cout << "tmpLit" << tmpLit ;*/
+                this->getListeContact()->getContact(query.value(0).toInt())->getGlit().ajouteLien(LienInterTache(
+                                                                                                      new Interaction(query.value(1).toString().toStdString(), {(unsigned)query.value(2).toDate().day(),(unsigned)query.value(2).toDate().month(),(unsigned)query.value(2).toDate().year()}),
+                                                                                                      new Tache(query.value(3).toString().toStdString(), {(unsigned)query.value(4).toDate().day(),(unsigned)query.value(4).toDate().month(),(unsigned)query.value(4).toDate().year()})));
+                std::cout << "LitContact" << this->getListeContact()->getContact(query.value(0).toInt())->getGlit().getLien(0) ;
+            }
+        }
+    }
 }

@@ -82,8 +82,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     GestionContact * listeContact = new GestionContact();
-    GestionLienIntertache * listeLienInterTache = new GestionLienIntertache();
-    MainWindow w(nullptr,listeContact,listeLienInterTache);
+    MainWindow w(nullptr,listeContact);
     w.show();
 
     //-- todo -- //

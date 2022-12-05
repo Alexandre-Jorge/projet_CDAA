@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QListWidget>
+#include <QtSql/QSqlDatabase>
 #include "gestioncontact.h"
 //#include "gestionlienintertache.h"
 
@@ -13,15 +14,16 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 private:
     GestionContact * listeContact;
-    GestionLienIntertache * listeLienInterTache;
+    QSqlDatabase db;
 
 public:
-    MainWindow(QWidget *, GestionContact *, GestionLienIntertache *);
+    MainWindow(QWidget *, GestionContact *);
     ~MainWindow();
     GestionContact * getListeContact();
-    GestionLienIntertache * getListeLienInterTache();
+    QSqlDatabase getDb();
     void setListeContact(GestionContact*);
-    void setListeLienInterTache(GestionLienIntertache*);
+    void setDb(QSqlDatabase);
+    void connexionBDD();
 
 signals:
     void toAffichagePrincipal();

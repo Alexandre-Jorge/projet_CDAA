@@ -20,6 +20,7 @@ class Contact{
     public:
         Contact();
         Contact(std::string, std::string, std::string, std::string, std::list<unsigned>, std::string);
+        Contact(std::string, std::string, std::string, std::string, std::list<unsigned>, std::string, sdate, sdate);
         Contact(const Contact&);
         ~Contact();
         std::string getNom();
