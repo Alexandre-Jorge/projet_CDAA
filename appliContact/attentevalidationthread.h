@@ -27,6 +27,7 @@ public:
     bool validMail(QString);
     bool validTel(QString);
     bool validPhoto(QString);
+    bool validInteraction(QString);
 signals:
     void toCreeContact(QString, QString, QString, QString, QString, QString);
     void toModifierContact(unsigned, QString, QString, QString, QString, QString, QString, QString);
