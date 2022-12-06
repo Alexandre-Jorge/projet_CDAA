@@ -82,7 +82,8 @@ Contact * GestionContact::getContact(int i){
         }
 		j++;
     }
-    return new Contact();//todo throws exception
+    //return new Contact();//todo throws exception
+    return nullptr;
 }
 
 int GestionContact::taille(){

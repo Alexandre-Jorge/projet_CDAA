@@ -256,7 +256,7 @@ void MainWindow::modifierContact(unsigned i, QString n, QString pr, QString e, Q
         tmpLi.push_back(Interaction(interactions[i].toStdString()));
     }*/
 
-    GestionLienIntertache tmpGlit = GestionLienIntertache();
+    GestionLienIntertache tmpGlit;
     for(int i=0;i<interactions.size();i++){
         //tmpLi.push_back(Interaction(interactions[i].toStdString()));
         tmpGlit.creeLien(new Interaction(interactions[i].toStdString()));
@@ -305,7 +305,7 @@ void MainWindow::connexionBDD()
             qDebug() << "Requête exécutée";
             while(query.next())
             {
-                Contact c = Contact();
+                Contact c;
                 c.setNom(query.value(1).toString().toStdString());
                 c.setPrenom(query.value(2).toString().toStdString());
                 c.setEntreprise(query.value(3).toString().toStdString());
@@ -321,11 +321,10 @@ void MainWindow::connexionBDD()
                 this->listeContact->ajouteContact(c);
             }
         }
-       query.prepare("select contact.id_contact, interaction.contenu, Interaction.dateinteract, Tache.desctache, Tache.datetache\
-                       from contact, LienInterTache, Interaction ,tache\
-                       where contact.id_lienintertache = LienInterTache.id_lienintertache\
-                       and LienInterTache.id_interaction = Interaction.id_interaction\
-                       and LienInterTache.id_tache = Tache.id_tache");
+       query.prepare("SELECT contact.id_contact, Interaction.contenu, interaction.dateinteract, LienInterTache.id_tache\
+                      FROM contact, LienInterTache, Interaction\
+                      WHERE contact.id_contact = LienInterTache.id_contact\
+                      AND LienInterTache.id_interaction = Interaction.id_interaction");
         if(!query.exec())
         {
             qDebug() << "Impossible d'exécuter la requête !";
@@ -333,24 +332,45 @@ void MainWindow::connexionBDD()
         else
         {
             qDebug() << "Requête exécutée";
+            GestionLienIntertache * tmpGlit = new GestionLienIntertache();
+            int ind = 1;
             while(query.next())
             {
                 /*qDebug() << "ID_Contact" <<  query.value(0).toInt();
                 qDebug() << "contenu" <<  query.value(1).toString();
                 qDebug() << "dateInteract" <<  query.value(2).toString();
-                qDebug() << "descTache" <<  query.value(3).toString();
-                qDebug() << "dateTache" <<  query.value(4).toString();*/
-                /*LienInterTache tmpLit = LienInterTache();
-                Interaction tmpI(query.value(1).toString().toStdString(), {(unsigned)query.value(2).toDate().day(),(unsigned)query.value(2).toDate().month(),(unsigned)query.value(2).toDate().year()});
-                Tache tmpT(query.value(3).toString().toStdString(), {(unsigned)query.value(4).toDate().day(),(unsigned)query.value(4).toDate().month(),(unsigned)query.value(4).toDate().year()});
-                tmpLit.setI(&tmpI);
-                tmpLit.setT(&tmpT);
-                std::cout << "tmpLit" << tmpLit ;*/
-                this->getListeContact()->getContact(query.value(0).toInt())->getGlit().ajouteLien(LienInterTache(
-                                                                                                      new Interaction(query.value(1).toString().toStdString(), {(unsigned)query.value(2).toDate().day(),(unsigned)query.value(2).toDate().month(),(unsigned)query.value(2).toDate().year()}),
-                                                                                                      new Tache(query.value(3).toString().toStdString(), {(unsigned)query.value(4).toDate().day(),(unsigned)query.value(4).toDate().month(),(unsigned)query.value(4).toDate().year()})));
-                std::cout << "LitContact" << this->getListeContact()->getContact(query.value(0).toInt())->getGlit().getLien(0) ;
+                qDebug() << "id_tache" <<  query.value(3).toInt();*/
+                if(query.value(0).toInt()!=ind){
+                    ind = query.value(0).toInt();
+                    delete tmpGlit;
+                    tmpGlit = new GestionLienIntertache();
+                }
+                LienInterTache tmpLit;
+                tmpLit.setI(new Interaction(query.value(1).toString().toStdString(), {(unsigned)query.value(2).toDate().day(),(unsigned)query.value(2).toDate().month(),(unsigned)query.value(2).toDate().year()}));
+                if(query.value(3).isNull()){
+                    tmpLit.setT(nullptr);
+                }
+                else{
+                    QSqlQuery query2;
+                    query2.prepare("SELECT desctache, datetache FROM tache WHERE id_tache = :i");
+                    query2.bindValue(":i", query.value(3).toInt());
+                    if(!query2.exec())
+                    {
+                        qDebug() << "Impossible d'exécuter la requête !";
+                    }
+                    else{
+                        qDebug() << "Requête exécutée";
+                        query2.first();
+                        tmpLit.setT(new Tache(query2.value(0).toString().toStdString(), {(unsigned)query2.value(1).toDate().day(),(unsigned)query2.value(1).toDate().month(),(unsigned)query2.value(1).toDate().year()}));
+                    }
+                }
+
+                tmpGlit->ajouteLien(tmpLit);
+                //std::cout << "tmpLit : " << tmpLit << std::endl;
+                this->listeContact->getContact(ind-1)->setGlit(*tmpGlit);
+                //std::cout << "LitContact : " << *this->getListeContact()->getContact(ind-1) << std::endl;
             }
+            delete tmpGlit;
         }
     }
 }
