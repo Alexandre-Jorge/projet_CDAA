@@ -38,7 +38,11 @@ struct sdate{
     }
 
     friend std::ostream& operator<<(std::ostream& os, const sdate& d){
-        os << d.jour << "/" << d.mois << "/" << d.annee << std::endl;
+        if(d.jour<10) os << "0" << d.jour ;
+        else os << d.jour ;
+        if(d.mois<10) os << "/" << "0" << d.mois;
+        else os << "/" << d.mois;
+        os << "/" << d.annee << std::endl;
         return os;
     }
 

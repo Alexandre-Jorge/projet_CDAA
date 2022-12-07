@@ -27,6 +27,105 @@ MainWindow::MainWindow(QWidget *parent, GestionContact * gc)
 
 MainWindow::~MainWindow()
 {
+    QSqlQuery query;
+
+    if(!db.open())
+    {
+        qDebug() << "Pas de connexion BDD !";
+    }
+    else
+    {
+        qDebug() << "Connexion BDD ok";
+        query.prepare("DELETE FROM contact");
+        qDebug() << "suppression TABLE contact : " << query.exec();
+        query.prepare("DELETE FROM interaction");
+        qDebug() << "suppression TABLE interaction : " << query.exec();
+        query.prepare("DELETE FROM tache");
+        qDebug() << "suppression TABLE tache : " << query.exec();
+        query.prepare("DELETE FROM LienInterTache");
+        qDebug() << "suppression TABLE lienintertache : " << query.exec();
+
+        //boucle sur gestioncontact pour inserer dans TOUTES les tables
+        QSqlQuery queryContact;
+        QSqlQuery queryInteraction;
+        QSqlQuery queryTache;
+        QSqlQuery queryLienInterTache;
+
+        queryContact.prepare("INSERT INTO contact VALUES (:i, :n, :pr, :e, :m, :t, :ph, :dc, :dm)");
+
+        queryInteraction.prepare("INSERT INTO interaction VALUES (:i, :c, :d)");
+
+        queryTache.prepare("INSERT INTO tache VALUES (:i, :c, :d)");
+
+        queryLienInterTache.prepare("INSERT INTO LienInterTache VALUES (:i, :idc, :idi, :idt)");
+
+        int nbInteraction = 0;
+        int nbTache = 0;
+        for(int i=0; i<this->listeContact->taille();i++){
+            queryContact.bindValue(":i", i+1);
+            queryContact.bindValue(":n", QString::fromStdString(this->listeContact->getContact(i)->getNom()));
+            queryContact.bindValue(":pr", QString::fromStdString(this->listeContact->getContact(i)->getPrenom()));
+            queryContact.bindValue(":e", QString::fromStdString(this->listeContact->getContact(i)->getEntreprise()));
+            queryContact.bindValue(":m", QString::fromStdString(this->listeContact->getContact(i)->getMail()));
+            std::list<unsigned> tmpTel = this->listeContact->getContact(i)->getTelephone();
+            QString telStr;
+            for (std::list<unsigned>::iterator it = tmpTel.begin(); it != tmpTel.end(); ++it){
+                telStr += QString::number(*it);
+            }
+            queryContact.bindValue(":t", telStr);
+            queryContact.bindValue(":ph", QString::fromStdString(this->listeContact->getContact(i)->getPhoto()));
+            QString dateStr;
+            dateStr.append(QString::number(this->listeContact->getContact(i)->getDateCreation().annee) + "-");
+            if(this->listeContact->getContact(i)->getDateCreation().mois < 10) dateStr.append("0");
+            dateStr.append(QString::number(this->listeContact->getContact(i)->getDateCreation().mois) + "-");
+            if(this->listeContact->getContact(i)->getDateCreation().jour < 10) dateStr.append("0");
+            dateStr.append(QString::number(this->listeContact->getContact(i)->getDateCreation().jour));
+            queryContact.bindValue(":dc", QString(dateStr));
+            dateStr = "";
+            dateStr.append(QString::number(this->listeContact->getContact(i)->getDateModification().annee) + "-");
+            if(this->listeContact->getContact(i)->getDateModification().mois < 10) dateStr.append("0");
+            dateStr.append(QString::number(this->listeContact->getContact(i)->getDateModification().mois) + "-");
+            if(this->listeContact->getContact(i)->getDateModification().jour < 10) dateStr.append("0");
+            dateStr.append(QString::number(this->listeContact->getContact(i)->getDateModification().jour));
+            queryContact.bindValue(":dm", QString(dateStr));
+            qDebug() << "insert into contact : " << queryContact.exec();
+            for(int j=0; j<this->listeContact->getContact(i)->getGlit().taille(); j++){
+                nbInteraction++;
+                queryInteraction.bindValue(":i", nbInteraction);
+                queryInteraction.bindValue(":c", QString::fromStdString(this->listeContact->getContact(i)->getGlit().getLien(j).getI()->getContenu()));
+                dateStr = "";
+                dateStr.append(QString::number(this->listeContact->getContact(i)->getGlit().getLien(j).getI()->getDateInteract().annee) + "-");
+                if(this->listeContact->getContact(i)->getGlit().getLien(j).getI()->getDateInteract().mois < 10) dateStr.append("0");
+                dateStr.append(QString::number(this->listeContact->getContact(i)->getGlit().getLien(j).getI()->getDateInteract().mois) + "-");
+                if(this->listeContact->getContact(i)->getGlit().getLien(j).getI()->getDateInteract().jour < 10) dateStr.append("0");
+                dateStr.append(QString::number(this->listeContact->getContact(i)->getGlit().getLien(j).getI()->getDateInteract().jour));
+                queryInteraction.bindValue(":d", QString(dateStr));
+                qDebug() << "insert into interaction : " << queryInteraction.exec();
+                if(this->listeContact->getContact(i)->getGlit().getLien(j).getT()!=nullptr){
+                    nbTache++;
+                    queryTache.bindValue(":i", nbTache);
+                    queryTache.bindValue(":c", QString::fromStdString(this->listeContact->getContact(i)->getGlit().getLien(j).getT()->getDesc()));
+                    dateStr = "";
+                    dateStr.append(QString::number(this->listeContact->getContact(i)->getGlit().getLien(j).getT()->getDate().annee) + "-");
+                    if(this->listeContact->getContact(i)->getGlit().getLien(j).getT()->getDate().mois < 10) dateStr.append("0");
+                    dateStr.append(QString::number(this->listeContact->getContact(i)->getGlit().getLien(j).getT()->getDate().mois) + "-");
+                    if(this->listeContact->getContact(i)->getGlit().getLien(j).getT()->getDate().jour < 10) dateStr.append("0");
+                    dateStr.append(QString::number(this->listeContact->getContact(i)->getGlit().getLien(j).getT()->getDate().jour));
+                    queryTache.bindValue(":d", QString(dateStr));
+                    queryLienInterTache.bindValue(":idt", nbTache);
+                    qDebug() << "insert into tache : " << queryTache.exec();
+                }
+                else{
+                    queryLienInterTache.bindValue(":idt", QString());
+                }
+                queryLienInterTache.bindValue(":i", nbInteraction);
+                queryLienInterTache.bindValue(":idc", i+1);
+                queryLienInterTache.bindValue(":idi", nbInteraction);
+                qDebug() << "insert into LienInterTache : " << queryLienInterTache.exec();
+            }
+        }
+        db.close();
+    }
 }
 
 GestionContact* MainWindow::getListeContact()
@@ -197,10 +296,12 @@ void MainWindow::affichageContact(QListWidgetItem* item)
     QString listeTacheStr = "";
     for(int i=0; i<getListeContact()->getContact(item->listWidget()->row(item))->getGlit().taille();i++){
         if(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()!=nullptr){
-            listeTacheStr.append(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDesc()) + " "
-                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().jour) + "/"
-                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().mois) + "/"
-                                                        + QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().annee) + "\n");
+            listeTacheStr.append(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDesc()) + " ");
+            if(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().jour < 10)listeTacheStr.append("0");
+            listeTacheStr.append(QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().jour) + "/");
+            if(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().mois < 10)listeTacheStr.append("0");
+            listeTacheStr.append(QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().mois) + "/");
+            listeTacheStr.append(QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().annee) + "\n");
         }
     }
     QLabel * listeTacheLabel = new QLabel(listeTacheStr);
@@ -373,4 +474,5 @@ void MainWindow::connexionBDD()
             delete tmpGlit;
         }
     }
+    db.close();
 }
