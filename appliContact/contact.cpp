@@ -1,6 +1,7 @@
 #include "contact.h"
 
-Contact::Contact(){//constructeur par defaut
+/// @brief constructeur par defaut
+Contact::Contact(){
     this->setNom("");
     this->setPrenom("");
     this->setEntreprise("");
@@ -13,7 +14,8 @@ Contact::Contact(){//constructeur par defaut
     this->setGlit(GestionLienIntertache());
     this->setDateModification({(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year});
 }
-
+/// @brief constructeur avec paramètre
+/// @param std::string nom, std::string prenom, std::string entreprise , std::string mail, std::list<unsigned> telephone, std::string photo
 Contact::Contact(std::string nom, std::string prenom, std::string entreprise , std::string mail, std::list<unsigned> telephone, std::string photo){
     this->setNom(nom);
     this->setPrenom(prenom);
@@ -27,7 +29,8 @@ Contact::Contact(std::string nom, std::string prenom, std::string entreprise , s
     this->setGlit(GestionLienIntertache());
     this->setDateModification({(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year});
 }
-
+/// @brief constructeur avec paramètre
+/// @param std::string nom, std::string prenom, std::string entreprise , std::string mail, std::list<unsigned> telephone, std::string photo, sdate dateC, sdate dateM
 Contact::Contact(std::string nom, std::string prenom, std::string entreprise , std::string mail, std::list<unsigned> telephone, std::string photo, sdate dateC, sdate dateM){
     this->setNom(nom);
     this->setPrenom(prenom);
@@ -39,7 +42,8 @@ Contact::Contact(std::string nom, std::string prenom, std::string entreprise , s
     this->setGlit(GestionLienIntertache());
     this->setDateModification(dateM);
 }
-
+/// @brief constructeur par clonage
+/// @param const Contact& c
 Contact::Contact(const Contact& c){
     this->setNom(c.nom);
     this->setPrenom(c.prenom);
@@ -51,104 +55,107 @@ Contact::Contact(const Contact& c){
     this->setGlit(c.glit);
     this->setDateModification(c.dateModification);
 }
-
+/// @brief destructeur
 Contact::~Contact(){
 }
 
+/// @brief renvoie le nom du contact
+/// @return std::string
 std::string Contact::getNom(){
     return this->nom;
 }
-
+/// @brief renvoie le prenom du contact
+/// @return std::string
 std::string Contact::getPrenom(){
     return this->prenom;
 }
-
+/// @brief renvoie l'entreprise du contact
+/// @return std::string
 std::string Contact::getEntreprise(){
     return this->entreprise;
 }
-
+/// @brief renvoie le mail du contact
+/// @return std::string
 std::string Contact::getMail(){
     return this->mail;
 }
-
+/// @brief renvoie le telephone du contact
+/// @return std::list<unsigned>
 std::list<unsigned> Contact::getTelephone(){
     return this->telephone;
 }
-
+/// @brief renvoie l'URL/URI de la photo du contact
+/// @return std::string
 std::string Contact::getPhoto(){
     return this->photo;
 }
-
+/// @brief renvoie la date de creation du contact
+/// @return sdate
 sdate Contact::getDateCreation(){
     return this->dateCreation;
 }
-
+/// @brief renvoie la date de modification du contact
+/// @return sdate
 sdate Contact::getDateModification(){
     return this->dateModification;
 }
-
+/// @brief renvoie la liste d'interaction/tache du contact
+/// @return GestionLienIntertache
 GestionLienIntertache Contact::getGlit(){
     return this->glit;
 }
-
-/*/// @brief Renvoie l'interaction à l'indice i de la liste li.
-/// @param i int
-/// @return Interaction*
-Interaction* Contact::getInteraction(int i){
-    int j=0;
-    for (std::list<Interaction>::iterator it = this->glit.begin(); it != this->glit.end(); ++it){
-        if (i==j){
-            return &(*it);
-        }
-		j++;
-    }
-	return new Interaction();//todo throws execption
-}*/
-
+/// @brief modifie le nom du contact
+/// @param std::string nom
 void Contact::setNom(std::string nom){
     this->nom = nom;
     this->updateModification();
 }
-
+/// @brief modifie le prenom du contact
+/// @param std::string prenom
 void Contact::setPrenom(std::string prenom){
     this->prenom = prenom;
     this->updateModification();
 }
-
+/// @brief modifie l'entreprise du contact
+/// @param std::string entreprise
 void Contact::setEntreprise(std::string entreprise){
     this->entreprise = entreprise;
     this->updateModification();
 }
-
+/// @brief modifie le mail du contact
+/// @param std::string mail
 void Contact::setMail(std::string mail){
     this->mail = mail;
     this->updateModification();
 }
-
+/// @brief modifie le telephone du contact
+/// @param std::list<unsigned> telephone
 void Contact::setTelephone(std::list<unsigned> telephone){
     this->telephone = telephone;
     this->updateModification();
 }
-
+/// @brief modifie l'URL/URI de la photo du contact
+/// @param std::string photo
 void Contact::setPhoto(std::string photo){
     this->photo = photo;
     this->updateModification();
 }
-
+/// @brief modifie la date de creation du contact
+/// @param sdate dateCreation
 void Contact::setDateCreation(sdate dateCreation){
     this->dateCreation = dateCreation;
 }
-
-
+/// @brief modifie la date de modification du contact
+/// @param sdate dateModification
+void Contact::setDateModification(sdate dateModification){
+    this->dateModification = dateModification;
+}
+/// @brief modifie la liste d'interaction/tache du contact
+/// @param GestionLienIntertache glit
 void Contact::setGlit(GestionLienIntertache glit){
     this->glit.setLit(glit.getLit());
     this->updateModification();
 }
-
-void Contact::setDateModification(sdate dateModification){
-    this->dateModification = dateModification;
-}
-
 /// @brief Met à jour la dateModification à aujourd'hui
 void Contact::updateModification(){
     time_t t = time(0);//nb sec depuis 1970
@@ -156,33 +163,9 @@ void Contact::updateModification(){
     this->dateModification = {(unsigned int)ltm->tm_mday,(unsigned int)1+ltm->tm_mon,(unsigned int)1900+ltm->tm_year};
 }
 
-/*/// @brief Ajoute l'interaction i à la fin de la liste li.
-/// @param i Interaction
-void Contact::ajouteInteraction(Interaction i){
-    this->li.push_back(i);
-    this->updateModification();
-}
-/// @brief Retire l'interaction i de la liste li.
-/// @param i Interaction
-void Contact::retireInteraction(Interaction i){
-    this->li.remove(i);
-    this->updateModification();
-}
-
-/// @brief Retire l'interaction à l'indice i de la liste li.
-/// @param i int
-void Contact::retireInteraction(int i){
-    int j=0;
-    for (std::list<Interaction>::iterator it = this->li.begin(); it != this->li.end(); ++it){
-        if (i==j){
-            this->li.remove(*it);
-            this->updateModification();
-            return;
-        }
-        j++;
-    }
-}*/
-
+/// @brief Surcharge operateur << : affichage d'un contact en console
+/// @param std::ostream& os, const Contact& contact
+/// @return std::ostream&
 std::ostream& operator<<(std::ostream& os, const Contact& contact){
     os << "Nom: " << contact.nom << std::endl;
     os << "Prenom: " << contact.prenom << std::endl;
@@ -196,18 +179,14 @@ std::ostream& operator<<(std::ostream& os, const Contact& contact){
     os << "Photo: " << contact.photo << std::endl;
     os << "Date de creation: " << contact.dateCreation.jour << "/" << contact.dateCreation.mois << "/" << contact.dateCreation.annee <<std::endl;
     os << "Date de Modification: " << contact.dateModification.jour << "/" << contact.dateModification.mois << "/" << contact.dateModification.annee <<std::endl;
-    /*os << "Liste d'interactions: " << std::endl;
-    for (std::list<Interaction>::const_iterator it = contact.li.begin(); it != contact.li.end(); ++it){
-        os << "\t" << *it;
-    }*/
     os << "Liste Lien Inter Tache : " << contact.glit << std::endl;
 
     os << std::endl;
     return os;
 }
 
-/// @brief Compare 2 contact si ils sont identiques ou non.
-/// @param contact Contact
+/// @brief surcharge operateur == : verifie si 2 contacts sont égaux
+/// @param const Contact& contact
 /// @return bool
 bool Contact::operator==(const Contact& contact){
     return  this->nom == contact.nom &&

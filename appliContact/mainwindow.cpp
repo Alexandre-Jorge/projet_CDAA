@@ -437,10 +437,6 @@ void MainWindow::connexionBDD()
             unsigned ind = 1;
             while(query.next())
             {
-                /*qDebug() << "ID_Contact" <<  query.value(0).toInt();
-                qDebug() << "contenu" <<  query.value(1).toString();
-                qDebug() << "dateInteract" <<  query.value(2).toString();
-                qDebug() << "id_tache" <<  query.value(3).toInt();*/
                 if(query.value(0).toUInt()!=ind){
                     ind = query.value(0).toUInt();
                     delete tmpGlit;

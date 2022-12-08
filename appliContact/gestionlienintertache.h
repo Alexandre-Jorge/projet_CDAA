@@ -21,4 +21,5 @@ class GestionLienIntertache{
         friend std::ostream& operator<<(std::ostream&, const GestionLienIntertache&);
         GestionLienIntertache operator+=(const LienInterTache&);
         GestionLienIntertache operator-=(const LienInterTache&);
+        GestionLienIntertache operator=(const GestionLienIntertache&);
 };

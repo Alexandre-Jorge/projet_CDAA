@@ -15,8 +15,7 @@ class Contact{
         std::string photo; //!<URL de la photo
         struct sdate dateCreation; //!<Date de création du contact
         struct sdate dateModification; //!<Date de dernière modification du contact
-        //std::list<Interaction> li; //!<Liste des interactions du contact
-        GestionLienIntertache glit;
+        GestionLienIntertache glit; //!<Liste des interactions/taches du contact
     public:
         Contact();
         Contact(std::string, std::string, std::string, std::string, std::list<unsigned>, std::string);
@@ -42,9 +41,6 @@ class Contact{
         void setGlit(GestionLienIntertache);
         void setDateModification(sdate);
         void updateModification();
-        /*void ajouteInteraction(Interaction);
-        void retireInteraction(Interaction);
-        void retireInteraction(int);*/
         friend std::ostream& operator<<(std::ostream&, const Contact&);
         bool operator==(const Contact&);
 };
