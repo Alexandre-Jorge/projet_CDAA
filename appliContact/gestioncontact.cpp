@@ -67,15 +67,15 @@ void GestionContact::retireContact(Contact c){
 
 /// @brief Retire le contact à l'indice i de la liste lc.
 /// @param i int
-void GestionContact::retireContact(int i){
+void GestionContact::retireContact(unsigned i){
     this->retireContact(*(this->getContact(i)));
 }
 
 /// @brief Renvoie le contact à l'indice i de la liste lc.
 /// @param i int
 /// @return Contact
-Contact * GestionContact::getContact(int i){
-    int j=0;
+Contact * GestionContact::getContact(unsigned i){
+    unsigned j=0;
     for (std::list<Contact>::iterator it = this->lc.begin(); it != this->lc.end(); ++it){
         if (i==j){
             return &(*it);
@@ -87,7 +87,7 @@ Contact * GestionContact::getContact(int i){
 }
 
 int GestionContact::taille(){
-    return this->lc.size();
+    return static_cast<int>(this->lc.size());
 }
 
 std::ostream& operator<<(std::ostream& os, const GestionContact& gc){

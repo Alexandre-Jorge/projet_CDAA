@@ -61,7 +61,7 @@ MainWindow::~MainWindow()
 
         int nbInteraction = 0;
         int nbTache = 0;
-        for(int i=0; i<this->listeContact->taille();i++){
+        for(unsigned i=0; i < static_cast<unsigned>(this->listeContact->taille());i++){
             queryContact.bindValue(":i", i+1);
             queryContact.bindValue(":n", QString::fromStdString(this->listeContact->getContact(i)->getNom()));
             queryContact.bindValue(":pr", QString::fromStdString(this->listeContact->getContact(i)->getPrenom()));
@@ -158,7 +158,7 @@ void MainWindow::affichagePrincipal()
     connect(boutCreeContact, SIGNAL(clicked()), this, SLOT(affichageCreeContact()));
 
     QListWidget * widgetListContact = new QListWidget();
-    for(int i=0;i<this->getListeContact()->taille();i++){
+    for(unsigned i=0; i < static_cast<unsigned>(this->getListeContact()->taille());i++){
         widgetListContact->addItem(QString::fromStdString(getListeContact()->getContact(i)->getNom() + " " + getListeContact()->getContact(i)->getPrenom()));
     }
     connect(widgetListContact, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(affichageContact(QListWidgetItem*)));
@@ -224,7 +224,7 @@ void MainWindow::creeContact(QString n, QString pr, QString e, QString m, QStrin
     //convertir le tel en std::list<unsigned>
     std::list<unsigned> tel = std::list<unsigned>();
     for(int i=0;i<t.size();i++){
-        tel.push_back((unsigned)(t.at(i).digitValue()));
+        tel.push_back(static_cast<unsigned>(t.at(i).digitValue()));
     }
 
     // créer un contact avec les infos saisies
@@ -240,8 +240,8 @@ void MainWindow::affichageContact(QListWidgetItem* item)
     QWidget * centralWidget = new QWidget();
 
     QImage * photo;
-    if(!QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getPhoto()).isEmpty()){
-        photo = new QImage(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getPhoto()));
+    if(!QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getPhoto()).isEmpty()){
+        photo = new QImage(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getPhoto()));
         if(photo->isNull()){
             photo = new QImage("../images/photoDeProfil.jpeg");
         }
@@ -259,16 +259,16 @@ void MainWindow::affichageContact(QListWidgetItem* item)
     photoAffichage->setMinimumHeight(100);
 
     QLabel * nomLabel = new QLabel("Nom");
-    QLineEdit * nomLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getNom()));
+    QLineEdit * nomLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getNom()));
     QLabel * prenomLabel = new QLabel("Prénom");
-    QLineEdit * prenomLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getPrenom()));
+    QLineEdit * prenomLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getPrenom()));
     QLabel * entrepriseLabel = new QLabel("Entreprise");
-    QLineEdit * entrepriseLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getEntreprise()));
+    QLineEdit * entrepriseLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getEntreprise()));
     QLabel * mailLabel = new QLabel("Mail");
-    QLineEdit * mailLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getMail()));
+    QLineEdit * mailLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getMail()));
 
     QString telStr = "";
-    std::list<unsigned> tmpTel = getListeContact()->getContact(item->listWidget()->row(item))->getTelephone();
+    std::list<unsigned> tmpTel = getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getTelephone();
     for (std::list<unsigned>::iterator it = tmpTel.begin(); it != tmpTel.end(); ++it){
         telStr += QString::number(*it);
     }
@@ -276,7 +276,7 @@ void MainWindow::affichageContact(QListWidgetItem* item)
     QLabel * telLabel = new QLabel("Téléphone");
     QLineEdit * telLineEdit = new QLineEdit(telStr);
     QLabel * photoLabel = new QLabel("URL/URI Photo");
-    QLineEdit * photoLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getPhoto()));
+    QLineEdit * photoLineEdit = new QLineEdit(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getPhoto()));
     QPushButton * boutModifier = new QPushButton("Valider modification",this);
     QPushButton * boutSupprimer = new QPushButton("Supprimer", this);
     QPushButton * boutRetour = new QPushButton("Retour", this);
@@ -288,20 +288,20 @@ void MainWindow::affichageContact(QListWidgetItem* item)
         interactionTextEdit->append(QString::fromStdString(it->getContenu()));
     }*/
 
-    for(int i=0; i<getListeContact()->getContact(item->listWidget()->row(item))->getGlit().taille();i++){
-        interactionTextEdit->append(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getI()->getContenu()));
+    for(int i=0; i<getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().taille();i++){
+        interactionTextEdit->append(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getI()->getContenu()));
     }
 
     QLabel * tacheLabel = new QLabel("Liste de tâche");
     QString listeTacheStr = "";
-    for(int i=0; i<getListeContact()->getContact(item->listWidget()->row(item))->getGlit().taille();i++){
-        if(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()!=nullptr){
-            listeTacheStr.append(QString::fromStdString(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDesc()) + " ");
-            if(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().jour < 10)listeTacheStr.append("0");
-            listeTacheStr.append(QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().jour) + "/");
-            if(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().mois < 10)listeTacheStr.append("0");
-            listeTacheStr.append(QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().mois) + "/");
-            listeTacheStr.append(QString::number(getListeContact()->getContact(item->listWidget()->row(item))->getGlit().getLien(i).getT()->getDate().annee) + "\n");
+    for(int i=0; i<getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().taille();i++){
+        if(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getT()!=nullptr){
+            listeTacheStr.append(QString::fromStdString(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getT()->getDesc()) + " ");
+            if(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getT()->getDate().jour < 10)listeTacheStr.append("0");
+            listeTacheStr.append(QString::number(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getT()->getDate().jour) + "/");
+            if(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getT()->getDate().mois < 10)listeTacheStr.append("0");
+            listeTacheStr.append(QString::number(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getT()->getDate().mois) + "/");
+            listeTacheStr.append(QString::number(getListeContact()->getContact(static_cast<unsigned>(item->listWidget()->row(item)))->getGlit().getLien(i).getT()->getDate().annee) + "\n");
         }
     }
     QLabel * listeTacheLabel = new QLabel(listeTacheStr);
@@ -323,7 +323,7 @@ void MainWindow::affichageContact(QListWidgetItem* item)
 
     setCentralWidget(centralWidget);
 
-    AttenteValidationThread * avt = new AttenteValidationThread(item->listWidget()->row(item),
+    AttenteValidationThread * avt = new AttenteValidationThread(static_cast<unsigned>(item->listWidget()->row(item)),
                                                                 nomLineEdit,
                                                                 prenomLineEdit,
                                                                 entrepriseLineEdit,
@@ -348,7 +348,7 @@ void MainWindow::modifierContact(unsigned i, QString n, QString pr, QString e, Q
     //convertir le tel en std::list<unsigned>
     std::list<unsigned> tel = std::list<unsigned>();
     for(int i=0;i<t.size();i++){
-        tel.push_back((unsigned)(t.at(i).digitValue()));
+        tel.push_back(static_cast<unsigned>(t.at(i).digitValue()));
     }
 
     QStringList interactions = in.split("\n");
@@ -413,12 +413,12 @@ void MainWindow::connexionBDD()
                 c.setMail(query.value(4).toString().toStdString());
                 std::list<unsigned> tel = std::list<unsigned>();
                 for(int i=0;i<query.value(5).toString().size();i++){
-                    tel.push_back((unsigned)(query.value(5).toString().at(i).digitValue()));
+                    tel.push_back(static_cast<unsigned>(query.value(5).toString().at(i).digitValue()));
                 }
                 c.setTelephone(tel);
                 c.setPhoto(query.value(6).toString().toStdString());
-                c.setDateCreation({(unsigned)query.value(7).toDate().day(),(unsigned)query.value(7).toDate().month(),(unsigned)query.value(7).toDate().year()});
-                c.setDateModification({(unsigned)query.value(8).toDate().day(),(unsigned)query.value(8).toDate().month(),(unsigned)query.value(8).toDate().year()});
+                c.setDateCreation({static_cast<unsigned>(query.value(7).toDate().day()),static_cast<unsigned>(query.value(7).toDate().month()),static_cast<unsigned>(query.value(7).toDate().year())});
+                c.setDateModification({static_cast<unsigned>(query.value(8).toDate().day()),static_cast<unsigned>(query.value(8).toDate().month()),static_cast<unsigned>(query.value(8).toDate().year())});
                 this->listeContact->ajouteContact(c);
             }
         }
@@ -434,20 +434,20 @@ void MainWindow::connexionBDD()
         {
             qDebug() << "Requête exécutée";
             GestionLienIntertache * tmpGlit = new GestionLienIntertache();
-            int ind = 1;
+            unsigned ind = 1;
             while(query.next())
             {
                 /*qDebug() << "ID_Contact" <<  query.value(0).toInt();
                 qDebug() << "contenu" <<  query.value(1).toString();
                 qDebug() << "dateInteract" <<  query.value(2).toString();
                 qDebug() << "id_tache" <<  query.value(3).toInt();*/
-                if(query.value(0).toInt()!=ind){
-                    ind = query.value(0).toInt();
+                if(query.value(0).toUInt()!=ind){
+                    ind = query.value(0).toUInt();
                     delete tmpGlit;
                     tmpGlit = new GestionLienIntertache();
                 }
                 LienInterTache tmpLit;
-                tmpLit.setI(new Interaction(query.value(1).toString().toStdString(), {(unsigned)query.value(2).toDate().day(),(unsigned)query.value(2).toDate().month(),(unsigned)query.value(2).toDate().year()}));
+                tmpLit.setI(new Interaction(query.value(1).toString().toStdString(), {static_cast<unsigned>(query.value(2).toDate().day()),static_cast<unsigned>(query.value(2).toDate().month()),static_cast<unsigned>(query.value(2).toDate().year())}));
                 if(query.value(3).isNull()){
                     tmpLit.setT(nullptr);
                 }
@@ -462,7 +462,7 @@ void MainWindow::connexionBDD()
                     else{
                         qDebug() << "Requête exécutée";
                         query2.first();
-                        tmpLit.setT(new Tache(query2.value(0).toString().toStdString(), {(unsigned)query2.value(1).toDate().day(),(unsigned)query2.value(1).toDate().month(),(unsigned)query2.value(1).toDate().year()}));
+                        tmpLit.setT(new Tache(query2.value(0).toString().toStdString(), {static_cast<unsigned>(query2.value(1).toDate().day()),static_cast<unsigned>(query2.value(1).toDate().month()),static_cast<unsigned>(query2.value(1).toDate().year())}));
                     }
                 }
 

@@ -18,8 +18,8 @@ class GestionContact{
         void updateModification();
         void ajouteContact(Contact);
         void retireContact(Contact);
-        void retireContact(int);
-        Contact * getContact(int);
+        void retireContact(unsigned);
+        Contact * getContact(unsigned);
         int taille();
         friend std::ostream& operator<<(std::ostream&, const GestionContact&);
         GestionContact operator+=(const Contact&);
