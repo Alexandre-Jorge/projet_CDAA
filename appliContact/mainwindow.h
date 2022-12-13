@@ -7,7 +7,6 @@
 #include <QListWidget>
 #include <QtSql/QSqlDatabase>
 #include "gestioncontact.h"
-//#include "gestionlienintertache.h"
 
 class MainWindow : public QMainWindow
 {

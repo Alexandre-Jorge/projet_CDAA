@@ -18,8 +18,8 @@ class AttenteValidationThread : public QThread
 {
     Q_OBJECT
 private:
-    bool cont;//booleen disant si ou non le thread doit continuer de tourner
-    unsigned ID;//position du contact la liste (ne sert que pour la modification d'un contact)
+    bool cont;//!< booleen disant si ou non le thread doit continuer de tourner
+    unsigned ID;//!< position du contact la liste (ne sert que pour la modification d'un contact)
     QLineEdit * nom;
     QLineEdit *prenom;
     QLineEdit * entreprise;
