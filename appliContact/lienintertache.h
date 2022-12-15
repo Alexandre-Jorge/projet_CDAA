@@ -2,6 +2,8 @@
 #include "tache.h"
 #include <list>
 
+/// @class LienInterTache
+/// @brief classe liant une Interaction a une Tache
 class LienInterTache{
 	private:
 		Interaction* i; //!<Pointeur d'une interaction

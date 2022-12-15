@@ -1,6 +1,9 @@
 #include "lienintertache.h"
 #include <iostream>
 #include <list>
+
+/// @class GestionLienIntertache
+/// @brief classe permttant la gestion d'une liste de LienInterTache
 class GestionLienIntertache{
     private:
         std::list<LienInterTache> lit;//!< liste de LienInterTache

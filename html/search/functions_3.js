@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['operator_2b_3d_38',['operator+=',['../classGestionContact.html#a764d87362839fe91be3b4cda67ae4278',1,'GestionContact::operator+=()'],['../classGestionLienIntertache.html#aea8db9dd89bc26030af25ee030a84a27',1,'GestionLienIntertache::operator+=()']]],
-  ['operator_2d_3d_39',['operator-=',['../classGestionContact.html#a1ea8c72ada05b47811dd2d40d14409fd',1,'GestionContact::operator-=()'],['../classGestionLienIntertache.html#a7eb3a36e1eac6d54a6cfc3870958ff6a',1,'GestionLienIntertache::operator-=()']]],
-  ['operator_3d_3d_40',['operator==',['../classContact.html#aa0a0973324e7994eed13aadd17b2cfa1',1,'Contact::operator==()'],['../classInteraction.html#ab34f07429ced38187a4431a8feebcdaa',1,'Interaction::operator==()'],['../classLienInterTache.html#a0c196801026685b299c0d34754be7883',1,'LienInterTache::operator==()'],['../structsdate.html#a36a2d7ed6e5f0491bae4040e315af01c',1,'sdate::operator==()'],['../classTache.html#a9ff98c633d12ad98b8906a485609ba75',1,'Tache::operator==()']]]
+  ['interaction_136',['Interaction',['../classInteraction.html#aadfd0e254296043c26508d47090ace76',1,'Interaction::Interaction()'],['../classInteraction.html#aedbf270cc4fdc3835541cad7bb0df7d4',1,'Interaction::Interaction(const std::string)'],['../classInteraction.html#ad822fd81714cc154270ada5815a901e9',1,'Interaction::Interaction(const std::string, const sdate)'],['../classInteraction.html#a9ef90611325f6cf7fd486848b8eaec3e',1,'Interaction::Interaction(const Interaction &amp;)']]]
 ];

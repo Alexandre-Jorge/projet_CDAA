@@ -8,6 +8,8 @@
 #include <QtSql/QSqlDatabase>
 #include "gestioncontact.h"
 
+/// @class MainWindow
+/// @brief classe representant la fenetre de l'application
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

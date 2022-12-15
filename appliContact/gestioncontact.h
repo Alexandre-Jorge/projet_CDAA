@@ -1,5 +1,7 @@
 #include "contact.h"
 
+/// @class GestionConatact
+/// @brief classe permettant la gestion d'une liste de Contact
 class GestionContact{
     private:
         std::list<Contact> lc;//!< liste de contact

@@ -4,11 +4,12 @@
 #include <chrono>
 #include "gestionlienintertache.h"
 
-
+/// @class Contact
+/// @brief classe representant un Contact
 class Contact{
     private:
         std::string nom; //!<Nom du contact
-        std::string prenom; //!<Prénom du contact
+        std::string prenom; //!<Prenom du contact
         std::string entreprise; //!<Nom de l'entreprise
         std::string mail; //!<Addresse email
         std::list<unsigned> telephone; //!<Liste unsigned du numéro de téléphone

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Contact_CDAA: tache.h Source File</title>
+<title>My Project: tache.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Contact_CDAA
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -70,26 +70,33 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;sdate.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classTache.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTache.html">Tache</a>{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        std::string desc; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">struct </span><a class="code" href="structsdate.html">sdate</a> date; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classTache.html">Tache</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classTache.html">Tache</a>(std::string desc);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classTache.html">Tache</a>(std::string desc, <a class="code" href="structsdate.html">sdate</a> date);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classTache.html">Tache</a>(<span class="keyword">const</span> <a class="code" href="classTache.html">Tache</a>&amp; tache);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        ~<a class="code" href="classTache.html">Tache</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::string getDesc();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="structsdate.html">sdate</a> getDate();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> setDesc(std::string desc);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> setDate(<a class="code" href="structsdate.html">sdate</a> date);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">friend</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="classTache.html">Tache</a>&amp; tache);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classTache.html#a9ff98c633d12ad98b8906a485609ba75">operator==</a>(<span class="keyword">const</span> <a class="code" href="classTache.html">Tache</a>&amp; tache);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="ttc" id="aclassTache_html"><div class="ttname"><a href="classTache.html">Tache</a></div><div class="ttdef"><b>Definition:</b> tache.h:6</div></div>
-<div class="ttc" id="aclassTache_html_a9ff98c633d12ad98b8906a485609ba75"><div class="ttname"><a href="classTache.html#a9ff98c633d12ad98b8906a485609ba75">Tache::operator==</a></div><div class="ttdeci">bool operator==(const Tache &amp;tache)</div><div class="ttdoc">Compare deux taches si elles sont identiques ou non.</div><div class="ttdef"><b>Definition:</b> tache.cpp:52</div></div>
-<div class="ttc" id="astructsdate_html"><div class="ttname"><a href="structsdate.html">sdate</a></div><div class="ttdef"><b>Definition:</b> sdate.h:3</div></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classTache.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTache.html">Tache</a>{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::string desc; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">struct </span><a class="code" href="structsdate.html">sdate</a> date; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classTache.html#a20ed613186582c368557a4e4e00152d8">Tache</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classTache.html#a20ed613186582c368557a4e4e00152d8">Tache</a>(std::string);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classTache.html#a20ed613186582c368557a4e4e00152d8">Tache</a>(std::string, <a class="code" href="structsdate.html">sdate</a>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classTache.html#a20ed613186582c368557a4e4e00152d8">Tache</a>(<span class="keyword">const</span> <a class="code" href="classTache.html">Tache</a>&amp;);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classTache.html#a7ff832b739f8365acbe60275c7868c63">~Tache</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::string <a class="code" href="classTache.html#af23581a6a51f99afee43baddfe58c935">getDesc</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="structsdate.html">sdate</a> <a class="code" href="classTache.html#ae1bf3c9ee4bf948ffa2889c6ce323643">getDate</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classTache.html#af67f212889af77c15cae0c9fbd48ca3e">setDesc</a>(std::string);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classTache.html#a4b03878fe7e7c12f268a3980f03dbc17">setDate</a>(<a class="code" href="structsdate.html">sdate</a>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classTache.html#a963d5e9e6bf1a1ded55a84329e5dc7f7">operator&lt;&lt;</a>(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="classTache.html">Tache</a>&amp;);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classTache.html#ac788c1f4f6ad5b04bb5c2c1614b02ca5">operator==</a>(<span class="keyword">const</span> <a class="code" href="classTache.html">Tache</a>&amp;);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="ttc" id="aclassTache_html"><div class="ttname"><a href="classTache.html">Tache</a></div><div class="ttdoc">classe representant une Tache</div><div class="ttdef"><b>Definition:</b> tache.h:8</div></div>
+<div class="ttc" id="aclassTache_html_a20ed613186582c368557a4e4e00152d8"><div class="ttname"><a href="classTache.html#a20ed613186582c368557a4e4e00152d8">Tache::Tache</a></div><div class="ttdeci">Tache()</div><div class="ttdoc">constructeur par defaut</div><div class="ttdef"><b>Definition:</b> tache.cpp:4</div></div>
+<div class="ttc" id="aclassTache_html_a4b03878fe7e7c12f268a3980f03dbc17"><div class="ttname"><a href="classTache.html#a4b03878fe7e7c12f268a3980f03dbc17">Tache::setDate</a></div><div class="ttdeci">void setDate(sdate)</div><div class="ttdoc">modifie la date de la tache</div><div class="ttdef"><b>Definition:</b> tache.cpp:48</div></div>
+<div class="ttc" id="aclassTache_html_a7ff832b739f8365acbe60275c7868c63"><div class="ttname"><a href="classTache.html#a7ff832b739f8365acbe60275c7868c63">Tache::~Tache</a></div><div class="ttdeci">~Tache()</div><div class="ttdoc">destructeur</div><div class="ttdef"><b>Definition:</b> tache.cpp:29</div></div>
+<div class="ttc" id="aclassTache_html_a963d5e9e6bf1a1ded55a84329e5dc7f7"><div class="ttname"><a href="classTache.html#a963d5e9e6bf1a1ded55a84329e5dc7f7">Tache::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const Tache &amp;)</div><div class="ttdoc">Surcharge operateur &lt;&lt; : affichage d'une tache en console.</div><div class="ttdef"><b>Definition:</b> tache.cpp:54</div></div>
+<div class="ttc" id="aclassTache_html_ac788c1f4f6ad5b04bb5c2c1614b02ca5"><div class="ttname"><a href="classTache.html#ac788c1f4f6ad5b04bb5c2c1614b02ca5">Tache::operator==</a></div><div class="ttdeci">bool operator==(const Tache &amp;)</div><div class="ttdoc">surcharge operateur == : verifie si 2 tache sont égales</div><div class="ttdef"><b>Definition:</b> tache.cpp:63</div></div>
+<div class="ttc" id="aclassTache_html_ae1bf3c9ee4bf948ffa2889c6ce323643"><div class="ttname"><a href="classTache.html#ae1bf3c9ee4bf948ffa2889c6ce323643">Tache::getDate</a></div><div class="ttdeci">sdate getDate()</div><div class="ttdoc">renvoie la date de la tache</div><div class="ttdef"><b>Definition:</b> tache.cpp:38</div></div>
+<div class="ttc" id="aclassTache_html_af23581a6a51f99afee43baddfe58c935"><div class="ttname"><a href="classTache.html#af23581a6a51f99afee43baddfe58c935">Tache::getDesc</a></div><div class="ttdeci">std::string getDesc()</div><div class="ttdoc">renvoie la description de la tache</div><div class="ttdef"><b>Definition:</b> tache.cpp:33</div></div>
+<div class="ttc" id="aclassTache_html_af67f212889af77c15cae0c9fbd48ca3e"><div class="ttname"><a href="classTache.html#af67f212889af77c15cae0c9fbd48ca3e">Tache::setDesc</a></div><div class="ttdeci">void setDesc(std::string)</div><div class="ttdoc">modifie la description de la tache</div><div class="ttdef"><b>Definition:</b> tache.cpp:43</div></div>
+<div class="ttc" id="astructsdate_html"><div class="ttname"><a href="structsdate.html">sdate</a></div><div class="ttdoc">structure representant une date</div><div class="ttdef"><b>Definition:</b> sdate.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

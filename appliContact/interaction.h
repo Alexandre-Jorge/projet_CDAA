@@ -2,6 +2,9 @@
 #define interaction_h
 #include <iostream>
 #include "sdate.h"
+
+/// @class Interaction
+/// @brief classe representant une Interaction
 class Interaction{
     private:
         std::string contenu;//!< contenu de l'interaction (texte)

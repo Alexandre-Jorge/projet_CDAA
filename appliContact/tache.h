@@ -3,6 +3,8 @@
 #include <chrono>
 #include "sdate.h"
 
+/// @class Tache
+/// @brief classe representant une Tache
 class Tache{
 	private:
 		std::string desc; //!<Description de la tache

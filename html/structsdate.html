@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Contact_CDAA: sdate Struct Reference</title>
+<title>My Project: sdate Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Contact_CDAA
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -64,17 +64,29 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="structsdate-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">sdate Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>structure representant une date  
+ <a href="structsdate.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="sdate_8h_source.html">sdate.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a36a2d7ed6e5f0491bae4040e315af01c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsdate.html#a36a2d7ed6e5f0491bae4040e315af01c">operator==</a> (<a class="el" href="structsdate.html">sdate</a> d)</td></tr>
-<tr class="memdesc:a36a2d7ed6e5f0491bae4040e315af01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux dates si elles sont identiques ou non.  <a href="structsdate.html#a36a2d7ed6e5f0491bae4040e315af01c">More...</a><br /></td></tr>
+<tr class="memdesc:a36a2d7ed6e5f0491bae4040e315af01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">surcharge operateur == : verifie si 2 sdate sont egales  <a href="structsdate.html#a36a2d7ed6e5f0491bae4040e315af01c">More...</a><br /></td></tr>
 <tr class="separator:a36a2d7ed6e5f0491bae4040e315af01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd5ecc02b4336743fb070fb6503958c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsdate.html#a5dd5ecc02b4336743fb070fb6503958c">operator&lt;</a> (<a class="el" href="structsdate.html">sdate</a> d)</td></tr>
+<tr class="memdesc:a5dd5ecc02b4336743fb070fb6503958c"><td class="mdescLeft">&#160;</td><td class="mdescRight">surcharge operateur &lt; : compare deux date pour voir si l'une est inferieur a l'autre  <a href="structsdate.html#a5dd5ecc02b4336743fb070fb6503958c">More...</a><br /></td></tr>
+<tr class="separator:a5dd5ecc02b4336743fb070fb6503958c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a52dbd8cf06cc9e987428cfeb8e6a2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsdate.html#a1a52dbd8cf06cc9e987428cfeb8e6a2a">operator&gt;</a> (<a class="el" href="structsdate.html">sdate</a> d)</td></tr>
+<tr class="memdesc:a1a52dbd8cf06cc9e987428cfeb8e6a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">surcharge operateur &gt; : compare deux date pour voir si l'une est superieur a l'autre  <a href="structsdate.html#a1a52dbd8cf06cc9e987428cfeb8e6a2a">More...</a><br /></td></tr>
+<tr class="separator:a1a52dbd8cf06cc9e987428cfeb8e6a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -90,8 +102,51 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsdate.html#ac558c6933446e0d3d1c7f407314de8d1">annee</a></td></tr>
 <tr class="memdesc:ac558c6933446e0d3d1c7f407314de8d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Année AAAA. <br /></td></tr>
 <tr class="separator:ac558c6933446e0d3d1c7f407314de8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ab21412111cad7ff39a3c2a3b6e472fcf"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsdate.html#ab21412111cad7ff39a3c2a3b6e472fcf">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structsdate.html">sdate</a> &amp;d)</td></tr>
+<tr class="memdesc:ab21412111cad7ff39a3c2a3b6e472fcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">surcharge operateur &lt;&lt; : affichage d'une sdate en console  <a href="structsdate.html#ab21412111cad7ff39a3c2a3b6e472fcf">More...</a><br /></td></tr>
+<tr class="separator:ab21412111cad7ff39a3c2a3b6e472fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>structure representant une date </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5dd5ecc02b4336743fb070fb6503958c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dd5ecc02b4336743fb070fb6503958c">&#9670;&nbsp;</a></span>operator&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sdate::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsdate.html">sdate</a>&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>surcharge operateur &lt; : compare deux date pour voir si l'une est inferieur a l'autre </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sdate</td><td>d </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
+</div>
+</div>
 <a id="a36a2d7ed6e5f0491bae4040e315af01c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36a2d7ed6e5f0491bae4040e315af01c">&#9670;&nbsp;</a></span>operator==()</h2>
 
@@ -116,10 +171,91 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>Compare deux dates si elles sont identiques ou non. </p>
+<p>surcharge operateur == : verifie si 2 sdate sont egales </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>sdate </td></tr>
+    <tr><td class="paramname">sdate</td><td>d </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
+</div>
+</div>
+<a id="a1a52dbd8cf06cc9e987428cfeb8e6a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a52dbd8cf06cc9e987428cfeb8e6a2a">&#9670;&nbsp;</a></span>operator&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sdate::operator&gt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsdate.html">sdate</a>&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>surcharge operateur &gt; : compare deux date pour voir si l'une est superieur a l'autre </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sdate</td><td>d </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="ab21412111cad7ff39a3c2a3b6e472fcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab21412111cad7ff39a3c2a3b6e472fcf">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structsdate.html">sdate</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>surcharge operateur &lt;&lt; : affichage d'une sdate en console </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sdate</td><td>d </td></tr>
   </table>
   </dd>
 </dl>

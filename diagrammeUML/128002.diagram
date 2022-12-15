@@ -2,37 +2,39 @@ format 224
 
 classcanvas 128002 class_ref 128002 // GestionContact
   classdiagramsettings member_max_width 0 end
-  xyzwh 69 23 2000 243 187
+  xyz 257.2 705.8 2000
 end
 classcanvas 128130 class_ref 128130 // Contact
   classdiagramsettings member_max_width 0 end
-  xyzwh 42 261 2000 291 255
+  xyzwh 1239.6 681.2 2000 371 255
 end
 classcanvas 128258 class_ref 128258 // GestionLienInterTache
   classdiagramsettings member_max_width 0 end
-  xyzwh 507 20 2000 283 149
+  xyzwh 1186 125 2000 469 231
 end
 classcanvas 128386 class_ref 128386 // LienInterTache
   classdiagramsettings member_max_width 0 end
-  xyz 589 272 2000
+  xyz 1696.6 176 2000
 end
 classcanvas 128514 class_ref 128514 // Tache
   classdiagramsettings member_max_width 0 end
-  xyz 670 449 2000
+  xyz 1724.6 345.8 2000
 end
 classcanvas 128642 class_ref 128642 // Interaction
   classdiagramsettings member_max_width 0 end
-  xyz 468 449 2000
+  xyz 1710.6 41.2 2000
+end
+classcanvas 129538 class_ref 135170 // AttenteValidationThread
+  classdiagramsettings member_max_width 0 end
+  xyz 945.8 393.2 2005
+end
+classcanvas 129794 class_ref 135298 // MainWindow
+  classdiagramsettings member_max_width 0 end
+  xyz 39.8 482.8 2000
 end
 relationcanvas 128898 relation_ref 128130 // <unidirectional association>
-  decenter_end 505
+  decenter_begin 479
   from ref 128002 z 2001 to ref 128130
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 129026 relation_ref 128258 // <unidirectional association>
-  decenter_begin 874
-  from ref 128130 z 2001 to ref 128642
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
@@ -42,16 +44,30 @@ relationcanvas 129154 relation_ref 128386 // <unidirectional association>
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129282 relation_ref 128514 // <unidirectional association>
-  decenter_begin 462
-  decenter_end 535
   from ref 128386 z 2001 to ref 128642
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129410 relation_ref 128642 // <unidirectional association>
-  decenter_begin 554
-  decenter_end 532
   from ref 128386 z 2001 to ref 128514
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129922 relation_ref 135170 // <unidirectional association>
+  decenter_end 507
+  from ref 128130 z 2001 to ref 128258
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130050 relation_ref 135298 // <unidirectional association>
+  decenter_begin 475
+  from ref 129794 z 2006 to ref 129538
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130178 relation_ref 135426 // <unidirectional association>
+  decenter_end 508
+  from ref 129794 z 2001 to ref 128002
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end

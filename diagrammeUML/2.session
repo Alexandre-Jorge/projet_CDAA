@@ -1,17 +1,19 @@
-window_sizes 1920 1016 450 1464 839 120
+window_sizes 1920 1016 309 1605 879 80
 cleanlooks_style
 diagrams
   active  classdiagram_ref 128002 // CDAA_contactApp
-    1171 671 100 A4 0 0
+    1605 879 70 C-Landscape 0 0
 end
 show_stereotypes
-selected attribute_ref 130178 // dateInteract
+selected classdiagram_ref 128002 // CDAA_contactApp
 open
   class_ref 128002 // GestionContact
   class_ref 128130 // Contact
-  class_ref 128258 // GestionLienInterTache
+  operation_ref 137986 // retireLien
   class_ref 128386 // LienInterTache
   class_ref 128514 // Tache
   class_ref 128642 // Interaction
+  class_ref 135170 // AttenteValidationThread
+  class_ref 135298 // MainWindow
 end
 end
